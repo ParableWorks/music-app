@@ -19,7 +19,7 @@ module.exports = () => ({
     }),
     new HtmlWebpackPlugin({
       template: './src/index.html',
-      filename: './dist/index.html',
+      filename: './index.html',
       title: 'autohome',
     }),
   ],
@@ -39,6 +39,14 @@ module.exports = () => ({
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: ['babel-loader', 'eslint-loader'],
+      },
+      {
+        test: /\.html$/,
+        use: [
+          {
+            loader: "html-loader"
+          }
+        ]
       },
       {
         test: /\.css$/,
