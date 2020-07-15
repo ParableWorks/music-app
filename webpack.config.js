@@ -20,7 +20,7 @@ module.exports = () => ({
     new HtmlWebpackPlugin({
       template: './src/index.html',
       filename: './index.html',
-      title: 'autohome',
+      favicon: './public/assets/favicon.png',
     }),
   ],
   devtool: 'cheap-module-source-map',
