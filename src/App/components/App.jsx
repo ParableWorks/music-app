@@ -7,8 +7,8 @@ import {
   Switch,
   Redirect,
 } from 'react-router-dom';
-import configureStore from './store/configureStore';
-import createMiddleware from './store/createMiddleware';
+import configureStore from '../store/configureStore';
+import createMiddleware from '../store/createMiddleware';
 
 const { store, persistor } = configureStore(createMiddleware);
 
