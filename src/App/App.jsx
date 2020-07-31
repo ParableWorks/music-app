@@ -7,8 +7,11 @@ import {
   Switch,
   Redirect,
 } from 'react-router-dom';
-import configureStore from '../store/configureStore';
-import createMiddleware from '../store/createMiddleware';
+
+import Test from '../Pages/Test/Test';
+
+import configureStore from './store/configureStore';
+import createMiddleware from './store/createMiddleware';
 
 const { store, persistor } = configureStore(createMiddleware);
 
@@ -18,6 +21,7 @@ const App = () => (
       <BrowserRouter>
         <Switch>
           <Route path="/fff" component={() => <div>fff</div>} />
+          <Route path="/test" component={Test} />
           <Route exact path="/" component={() => <div>Hello World!</div>} />
           <Redirect to="/" />
         </Switch>
