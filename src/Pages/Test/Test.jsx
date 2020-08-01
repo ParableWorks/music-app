@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Piano, KeyboardShortcuts, MidiNumbers } from 'react-piano';
 import 'react-piano/dist/styles.css';
 import Soundfont from 'soundfont-player';
@@ -11,15 +11,28 @@ const Test = () => {
     lastNote,
     keyboardConfig: KeyboardShortcuts.HOME_ROW,
   });
+  const [loading, setLoading] = useState(true);
+  const [instrument, setInstrument] = useState();
+
+  useEffect(() => {
+    const ac = new AudioContext();
+    Soundfont.instrument(ac, 'clavinet').then((clavinet) => {
+      setInstrument(clavinet);
+      setLoading(false);
+    });
+  }, []);
 
   return (
     <Piano
+      disabled={loading}
       noteRange={{ first: firstNote, last: lastNote }}
       playNote={(midiNumber) => {
-        const ac = new AudioContext();
-        Soundfont.instrument(ac, 'clavinet').then((clavinet) => {
-          clavinet.play('C4');
-        });
+        // instrument.play('C4');
+        // instrument.resolve((clavinet) => {
+        //   clavinet.play('C4');
+        // });
+        instrument.play(midiNumber);
+        // playNote();
         // Play a given note - see notes below
       }}
       stopNote={(midiNumber) => {
