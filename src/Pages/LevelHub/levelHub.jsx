@@ -1,0 +1,75 @@
+import React from 'react';
+import { makeStyles, createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
+import Checkbox from '@material-ui/core/Checkbox';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+    color: '#00FF00',
+    backgroundColor: theme.palette.primary.light,
+  },
+  paper: {
+    height: 140,
+    width: 100,
+    background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+  },
+  control: {
+    padding: theme.spacing(2),
+  },
+}));
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      light: '#757ce8',
+      main: '#3f50b5',
+      dark: '#002884',
+      contrastText: '#fff',
+    },
+    secondary: {
+      light: '#ff7961',
+      main: '#f44336',
+      dark: '#ba000d',
+      contrastText: '#000',
+    },
+  },
+});
+export default function LevelHub() {
+  const classes = useStyles(theme);
+
+  return (
+    <ThemeProvider theme={theme}>
+      <Grid
+        container
+        classes={{
+          root: classes.root,
+        }}
+        spacing={2}
+      >
+        <Grid item xs={12}>
+          <Grid container justify="center" spacing={4}>
+            {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((value) => (
+              <Grid key={value} item>
+                <Paper
+                  classes={{
+                    root: classes.paper,
+                  }}
+                >
+                  hello this is text
+                  <Checkbox
+                    classes={{
+                      root: classes.root,
+                    }}
+                  />
+                </Paper>
+
+              </Grid>
+            ))}
+          </Grid>
+        </Grid>
+      </Grid>
+    </ThemeProvider>
+  );
+}

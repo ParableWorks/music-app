@@ -9,6 +9,7 @@ import {
 } from 'react-router-dom';
 
 import Test from '../Pages/Test/Test';
+import LevelHub from '../Pages/LevelHub/LevelHub';
 
 import configureStore from './store/configureStore';
 import createMiddleware from './store/createMiddleware';
@@ -22,6 +23,7 @@ const App = () => (
         <Switch>
           <Route path="/fff" component={() => <div>fff</div>} />
           <Route path="/test" component={Test} />
+          <Route path="/levelhub" component={LevelHub} />
           <Route exact path="/" component={() => <div>Hello World!</div>} />
           <Redirect to="/" />
         </Switch>
