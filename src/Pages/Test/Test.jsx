@@ -35,9 +35,9 @@ const Test = () => {
         // playNote();
         // Play a given note - see notes below
       }}
-      stopNote={(midiNumber) => {
-        // Stop playing a given note - see notes below
-      }}
+      // stopNote={(midiNumber) => {
+      //   // Stop playing a given note - see notes below
+      // }}
       width={1000}
       keyboardShortcuts={keyboardShortcuts}
     />
