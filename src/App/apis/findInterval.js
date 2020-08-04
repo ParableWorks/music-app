@@ -16,17 +16,13 @@ export const intervals = {
 
 const findInterval = (note1, note2) => {
   if (typeof note1 !== "number" || typeof note2 !== "number") {
-    // console.error("findInterval
-    // unable to find interval: parameters of type Number and integers");
-    return "findInterval unable to find interval: parameters of type Number and integers";
+    throw new Error("findInterval unable to find interval: parameters of type Number and integers");
   }
   if (((note1 % 1) !== 0) || ((note2 % 1) !== 0)) {
-    // console.error("findInterval unable to find interval: parameters must be integers");
-    return "findInterval unable to find interval: parameters must be integers";
+    throw new Error("findInterval unable to find interval: parameters must be integers");
   }
   if ((note2 - note1) > 12) {
-    // console.error("findInterval unable to find interval: interval is greater than 12 semitones");
-    return "findInterval unable to find interval: interval is greater than 12 semitones";
+    throw new Error("findInterval unable to find interval: interval is greater than 12 semitones");
   }
 
   return intervals[Math.abs(note2 - note1)];
