@@ -1,14 +1,14 @@
-import React from 'react';
-import { Provider } from 'react-redux';
-import { PersistGate } from 'redux-persist/integration/react';
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import React from "react";
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
-import Test from '../Pages/Test/Test';
-import LevelHub from '../Pages/LevelHub/levelHub';
-import footer from '../Pages/UniversalComponents/footer';
+import Test from "../Pages/Test/Test";
+import LevelHub from "../Pages/LevelHub/levelHub";
+import footer from "../Pages/UniversalComponents/footer";
 
-import configureStore from './store/configureStore';
-import createMiddleware from './store/createMiddleware';
+import configureStore from "./store/configureStore";
+import createMiddleware from "./store/createMiddleware";
 
 const { store, persistor } = configureStore(createMiddleware);
 

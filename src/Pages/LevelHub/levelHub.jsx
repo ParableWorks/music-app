@@ -1,14 +1,13 @@
-import React from 'react';
+import React from "react";
 import {
   makeStyles,
   createMuiTheme,
   ThemeProvider,
-} from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import Checkbox from '@material-ui/core/Checkbox';
-import NavBar from '../UniversalComponents/NavBar';
-import clsx from 'clsx';
+} from "@material-ui/core/styles";
+import Grid from "@material-ui/core/Grid";
+import NavBar from "../UniversalComponents/NavBar";
+import HubGrid from "./Elements/HubGrid";
+import clsx from "clsx";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,29 +24,29 @@ const useStyles = makeStyles((theme) => ({
   },
   icon: {
     backgroundColor:
-      'linear-gradient(180deg,hsla(0,0%,100%,.8),hsla(0,0%,100%,0))',
-    color: 'primary',
+      "linear-gradient(180deg,hsla(0,0%,100%,.8),hsla(0,0%,100%,0))",
+    color: "primary",
   },
   checkedIcon: {
     backgroundColor:
-      'linear-gradient(180deg,hsla(0,0%,100%,.8),hsla(0,0%,100%,0))',
-    color: 'primary',
+      "linear-gradient(180deg,hsla(0,0%,100%,.8),hsla(0,0%,100%,0))",
+    color: "primary",
   },
 }));
 
 const theme = createMuiTheme({
   palette: {
     primary: {
-      light: '#757ce8',
-      main: '#3f50b5',
-      dark: '#002884',
-      contrastText: '#fff',
+      light: "#757ce8",
+      main: "#3f50b5",
+      dark: "#002884",
+      contrastText: "#fff",
     },
     secondary: {
-      light: '#ff7961',
-      main: '#f44336',
-      dark: '#ba000d',
-      contrastText: '#000',
+      light: "#ff7961",
+      main: "#f44336",
+      dark: "#ba000d",
+      contrastText: "#000",
     },
   },
 });
@@ -58,40 +57,12 @@ export default function LevelHub() {
   return (
     <ThemeProvider theme={theme}>
       <NavBar />
-      <Grid
-        container
-        classes={{
-          root: classes.root,
-        }}
-        spacing={2}
-      >
-        <Grid item xs={12}>
-          <Grid container justify="center" spacing={4}>
-            {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((value) => (
-              <Grid key={value} item>
-                <Paper
-                  classes={{
-                    root: classes.paper,
-                  }}
-                >
-                  hello this is
-                  {value}
-                  <Checkbox
-                    className={classes.icon}
-                    checkedIcon={<span className={classes.checkedIcon} />}
-
-                    // checkedIcon={
-                    //   <span
-                    //     className={clsx(classes.icon, classes.checkedIcon)}
-                    //   />
-                    // }
-                    // icon={<span className={classes.icon} />}
-                  />
-                </Paper>
-              </Grid>
-            ))}
-          </Grid>
+      <Grid item container>
+        <Grid item xs={2} lg={1} />
+        <Grid item xs={8} lg={10}>
+          <HubGrid />
         </Grid>
+        <Grid item xs={2} lg={1} />
       </Grid>
     </ThemeProvider>
   );
