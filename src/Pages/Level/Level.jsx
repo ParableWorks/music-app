@@ -1,5 +1,5 @@
-import React from "react";
-import { useParams } from "react-router-dom";
+import React from 'react';
+import { useParams, Link } from 'react-router-dom';
 
 import GenericLevel from "./components/GenericLevel";
 import levelConfig from "../../levelConfig.json";
@@ -16,7 +16,9 @@ const Level = () => {
           {` '${levelNumber}' `}
         </h3>
         <br />
-        <a href="/levelhub">return to levelhub</a>
+        <Link to="/levelhub">
+          return to levelhub
+        </Link>
       </div>
     );
   }

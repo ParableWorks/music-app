@@ -2,7 +2,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import {
-  BrowserRouter, Route, Switch, Redirect,
+  BrowserRouter, Route, Switch, Redirect, Link,
 } from 'react-router-dom';
 
 import Test from '../Pages/Test/Test';
@@ -26,7 +26,7 @@ const App = () => (
             <Route path="/level/:levelNumber" component={Level} />
             <Route path="/levelhub" component={LevelHub} />
             <Route path="/test" component={Test} />
-            <Route exact path="/" component={() => <a href="/levelhub">Hello World!</a>} />
+            <Route exact path="/" component={() => <Link to="/levelhub">Hello World!</Link>} />
             <Redirect to="/" />
           </Switch>
         </BrowserRouter>
