@@ -1,19 +1,10 @@
 {
-  "musicTheory": {
-    "levels": {
-      "1": {
-        "title": "first level",
-        "description": "The first music theory level!"
-      },
-      "2": {
-      }
-    }
-  },
-  "earTraining": {
-    "levels": {
-      "1": {
-        "title": "ear training level one"
-      }
+  "levels": {
+    "1": {
+      "title": "first level",
+      "description": "The first music theory level!"
+    },
+    "2": {
     }
   }
 }

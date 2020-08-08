@@ -23,7 +23,7 @@ const App = () => (
         <BrowserRouter>
           <Switch>
             {/* <Route path="/footer" component={footer} /> */}
-            <Route path="/level/:levelType/:levelNumber" component={Level} />
+            <Route path="/level/:levelNumber" component={Level} />
             <Route path="/levelhub" component={LevelHub} />
             <Route path="/test" component={Test} />
             <Route exact path="/" component={() => <a href="/levelhub">Hello World!</a>} />
