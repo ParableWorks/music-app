@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 // dont delete this i am still trying to see if i can get it to work -prem
-// const ErrorOverlayPlugin = require('error-overlay-webpack-plugin');
+const ErrorOverlayPlugin = require('error-overlay-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -14,7 +14,7 @@ module.exports = () => ({
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    // new ErrorOverlayPlugin(),
+    new ErrorOverlayPlugin(),
     new MiniCssExtractPlugin({
       filename: 'style.css',
     }),
