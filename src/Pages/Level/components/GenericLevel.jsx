@@ -11,7 +11,9 @@ const GenericLevel = (props) => {
         {title}
       </h1>
       <br />
-      level description:
+      <a href="/levelhub">
+        return to levelhub
+      </a>
     </div>
   );
 };

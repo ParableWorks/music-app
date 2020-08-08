@@ -9,10 +9,16 @@ const Level = () => {
 
   if (levelConfig.levels[levelNumber] === undefined) {
     return (
-      <h3>
-        There is no level with numer:
-        {` '${levelNumber}' `}
-      </h3>
+      <div>
+        <h3>
+          There is no level with number:
+          {` '${levelNumber}' `}
+        </h3>
+        <br />
+        <a href="/levelhub">
+          return to levelhub
+        </a>
+      </div>
     );
   }
   return (

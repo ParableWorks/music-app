@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from "react-router-dom";
 import {
   makeStyles,
   createMuiTheme,
@@ -9,6 +10,8 @@ import { Typography } from '@material-ui/core';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardActionArea from '@material-ui/core/CardActionArea';
+
+import levelConfig from '../../../levelConfig.json';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,17 +29,22 @@ const useStyles = makeStyles((theme) => ({
 
 const HubGrid = () => {
   const classes = useStyles();
+  const history = useHistory();
 
   return (
     <Grid container spacing={8} className={classes.root}>
-      {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((cur) => (
+      {Object.keys(levelConfig.levels).map((cur) => (
         <Grid key={cur} item xs={6} sm={4} md={3} lg={2}>
-          <CardActionArea>
+          <CardActionArea onClick={() => history.push(`/level/${cur}`)}>
             <Card className={classes.card}>
               <CardContent>
                 <Typography align="left">
                   Level
+                  {' '}
                   {cur}
+                  :
+                  <br />
+                  {levelConfig.levels[cur].title}
                 </Typography>
               </CardContent>
             </Card>

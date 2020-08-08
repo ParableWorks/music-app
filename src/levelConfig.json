@@ -2,9 +2,13 @@
   "levels": {
     "1": {
       "title": "first level",
-      "description": "The first music theory level!"
+      "description": "The first level!"
     },
     "2": {
+      "title": "the second level"
+    },
+    "3": {
+      "title": "level number 3"
     }
   }
 }
