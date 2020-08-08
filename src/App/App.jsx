@@ -7,6 +7,7 @@ import {
 
 import Test from '../Pages/Test/Test';
 import LevelHub from '../Pages/LevelHub/LevelHub';
+import Level from '../Pages/Level/Level';
 // import footer from '../Pages/UniversalComponents/footer';
 
 import configureStore from './store/configureStore';
@@ -21,8 +22,8 @@ const App = () => (
       <PersistGate loading={null} persistor={persistor}>
         <BrowserRouter>
           <Switch>
-            <Route path="/fff" component={() => <div>fff</div>} />
             {/* <Route path="/footer" component={footer} /> */}
+            <Route path="/level/:levelNumber" component={Level} />
             <Route path="/levelhub" component={LevelHub} />
             <Route path="/test" component={Test} />
             <Route exact path="/" component={() => <div>Hello World!</div>} />
