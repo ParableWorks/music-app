@@ -1,14 +1,14 @@
-import React from "React";
+import React from 'react';
 import {
   makeStyles,
   createMuiTheme,
   ThemeProvider,
-} from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
-import { Typography } from "@material-ui/core";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import CardActionArea from "@material-ui/core/CardActionArea";
+} from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import { Typography } from '@material-ui/core';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import CardActionArea from '@material-ui/core/CardActionArea';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -17,10 +17,10 @@ const useStyles = makeStyles((theme) => ({
   },
   card: {
     padding: theme.spacing(0),
-    textAlign: "center",
-    height: "140px",
+    textAlign: 'center',
+    height: '140px',
     color: theme.palette.text.secondary,
-    backgroundColor: "#E8E9F3",
+    backgroundColor: '#E8E9F3',
   },
 }));
 
@@ -34,7 +34,10 @@ const HubGrid = () => {
           <CardActionArea>
             <Card className={classes.card}>
               <CardContent>
-                <Typography align="left">Level {cur}</Typography>
+                <Typography align="left">
+                  Level
+                  {cur}
+                </Typography>
               </CardContent>
             </Card>
           </CardActionArea>
