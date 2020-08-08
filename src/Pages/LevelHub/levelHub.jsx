@@ -1,13 +1,13 @@
-import React from 'react';
+import React from "react";
 import {
   makeStyles,
   createMuiTheme,
   ThemeProvider,
-} from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import clsx from 'clsx';
-import NavBar from '../UniversalComponents/NavBar';
-import HubGrid from './Elements/HubGrid';
+} from "@material-ui/core/styles";
+import Grid from "@material-ui/core/Grid";
+import clsx from "clsx";
+import NavBar from "../UniversalComponents/NavBar";
+import HubGrid from "./Elements/HubGrid";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,29 +24,29 @@ const useStyles = makeStyles((theme) => ({
   },
   icon: {
     backgroundColor:
-      'linear-gradient(180deg,hsla(0,0%,100%,.8),hsla(0,0%,100%,0))',
-    color: 'primary',
+      "linear-gradient(180deg,hsla(0,0%,100%,.8),hsla(0,0%,100%,0))",
+    color: "primary",
   },
   checkedIcon: {
     backgroundColor:
-      'linear-gradient(180deg,hsla(0,0%,100%,.8),hsla(0,0%,100%,0))',
-    color: 'primary',
+      "linear-gradient(180deg,hsla(0,0%,100%,.8),hsla(0,0%,100%,0))",
+    color: "primary",
   },
 }));
 
 const theme = createMuiTheme({
   palette: {
     primary: {
-      light: '#757ce8',
-      main: '#3f50b5',
-      dark: '#002884',
-      contrastText: '#fff',
+      light: "#757ce8",
+      main: "#3f50b5",
+      dark: "#002884",
+      contrastText: "#fff",
     },
     secondary: {
-      light: '#ff7961',
-      main: '#f44336',
-      dark: '#ba000d',
-      contrastText: '#000',
+      light: "#ff7961",
+      main: "#f44336",
+      dark: "#ba000d",
+      contrastText: "#000",
     },
   },
 });
@@ -56,7 +56,7 @@ export default function LevelHub() {
 
   return (
     <ThemeProvider theme={theme}>
-      <NavBar />
+      <NavBar levelTitle="Level Hub" disableHub={true} />
       <Grid item container>
         <Grid item xs={2} lg={1} />
         <Grid item xs={8} lg={10}>
