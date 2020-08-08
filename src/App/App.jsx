@@ -6,8 +6,8 @@ import {
 } from 'react-router-dom';
 
 import Test from '../Pages/Test/Test';
-import LevelHub from '../Pages/LevelHub/levelHub';
-import footer from '../Pages/UniversalComponents/footer';
+import LevelHub from '../Pages/LevelHub/LevelHub';
+// import footer from '../Pages/UniversalComponents/footer';
 
 import configureStore from './store/configureStore';
 import createMiddleware from './store/createMiddleware';
@@ -22,7 +22,7 @@ const App = () => (
         <BrowserRouter>
           <Switch>
             <Route path="/fff" component={() => <div>fff</div>} />
-            <Route path="/footer" component={footer} />
+            {/* <Route path="/footer" component={footer} /> */}
             <Route path="/levelhub" component={LevelHub} />
             <Route path="/test" component={Test} />
             <Route exact path="/" component={() => <div>Hello World!</div>} />

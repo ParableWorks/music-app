@@ -27,17 +27,10 @@ const Test = () => {
       disabled={loading}
       noteRange={{ first: firstNote, last: lastNote }}
       playNote={(midiNumber) => {
-        // instrument.play('C4');
-        // instrument.resolve((clavinet) => {
-        //   clavinet.play('C4');
-        // });
         instrument.play(midiNumber);
-        // playNote();
-        // Play a given note - see notes below
       }}
-      // stopNote={(midiNumber) => {
-      //   // Stop playing a given note - see notes below
-      // }}
+      stopNote={() => {
+      }}
       width={1000}
       keyboardShortcuts={keyboardShortcuts}
     />
