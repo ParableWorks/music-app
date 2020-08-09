@@ -6,7 +6,7 @@ import {
 } from 'react-router-dom';
 
 import Test from '../Pages/Test/Test';
-import LevelHub from '../Pages/LevelHub/LevelHub';
+import LevelHub from '../Pages/LevelHub/levelHub';
 import Level from '../Pages/Level/Level';
 // import footer from '../Pages/UniversalComponents/footer';
 
