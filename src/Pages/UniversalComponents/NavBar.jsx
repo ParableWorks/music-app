@@ -37,6 +37,9 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 0.03,
     color: "#221266",
   },
+  drawerHeaderTopMargin: {
+    ...theme.mixins.toolbar,
+  },
 }));
 
 const NavBar = ({ levelTitle, disableHub }) => {
@@ -66,6 +69,7 @@ const NavBar = ({ levelTitle, disableHub }) => {
           </Typography>
         </Toolbar>
       </AppBar>
+      <div className={classes.drawerHeaderTopMargin} />
     </div>
   );
 };

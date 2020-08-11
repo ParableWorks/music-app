@@ -16,8 +16,8 @@ const OnScreenKeyboard = () => {
 
   useEffect(() => {
     const ac = new AudioContext();
-    Soundfont.instrument(ac, 'clavinet').then((clavinet) => {
-      setInstrument(clavinet);
+    Soundfont.instrument(ac, 'piano').then((piano) => {
+      setInstrument(piano);
       setLoading(false);
     });
   }, []);

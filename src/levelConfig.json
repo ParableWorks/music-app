@@ -12,6 +12,10 @@
     },
     "4": {
 
+    },
+    "test": {
+      "title": "test level",
+      "type": "midi"
     }
   }
 }
