@@ -2,7 +2,8 @@
   "levels": {
     "1": {
       "title": "first level",
-      "description": "The first level!"
+      "description": "The first level!",
+      "type": "midi"
     },
     "2": {
       "title": "the second level"
@@ -12,10 +13,6 @@
     },
     "4": {
 
-    },
-    "test": {
-      "title": "test level",
-      "type": "midi"
     }
   }
 }
