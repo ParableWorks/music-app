@@ -16,7 +16,7 @@ const OnScreenKeyboard = () => {
 
   useEffect(() => {
     const ac = new AudioContext();
-    Soundfont.instrument(ac, 'piano').then((piano) => {
+    Soundfont.instrument(ac, 'acoustic_grand_piano').then((piano) => {
       setInstrument(piano);
       setLoading(false);
     });
