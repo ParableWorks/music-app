@@ -1,10 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import {
-  makeStyles,
-  createMuiTheme,
-  ThemeProvider,
-} from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import { Typography } from '@material-ui/core';
 import Card from '@material-ui/core/Card';
@@ -39,10 +35,7 @@ const HubGrid = () => {
             <Card className={classes.card}>
               <CardContent>
                 <Typography align="left">
-                  Level
-                  {' '}
-                  {cur}
-                  :
+                  {`Level ${cur}:`}
                   <br />
                   {levelConfig.levels[cur].title}
                 </Typography>
