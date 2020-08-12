@@ -3,8 +3,34 @@ import PropTypes from 'prop-types';
 import Vex from 'vexflow';
 
 const SheetMusic = (props) => {
-  const { notes, clef } = props;
+  const { notes, clef, redNotes, greenNotes } = props;
   const elemRef = useRef();
+
+  /**
+   * applies styles to a vex note with multiple keys
+   * @param {Vex.Flow.StaveNote} note Vex note with keys in it
+   * @param {Array.<String>} styledNotes string of values of the notes to be styles
+   * @param {Object} style object with vexflow styling for a note
+   */
+  const styleKeys = (note, styledNotes, style) => {
+    note.keys.forEach((key, index) => {
+      if (styledNotes.find((element) => element === key)) {
+        note.setKeyStyle(index, style);
+        note.setLedgerLineStyle(index, style);
+      }
+    });
+    return note;
+  };
+
+  const redNoteStyle = {
+    fillStyle: "red",
+    strokeStyle: "red",
+  };
+
+  const greenNoteStyle = {
+    fillStyle: "green",
+    strokeStyle: "green",
+  };
 
   useEffect(() => {
     const VF = Vex.Flow;
@@ -28,13 +54,17 @@ const SheetMusic = (props) => {
     // Connect it to the rendering context and draw!
     stave.setContext(context).draw();
 
-    const VFnotes = [
-      new VF.StaveNote({ clef, keys: notes, duration: "w" }),
+    let staveNotes = [
+      // union of notes and redNotes with no duplicates
+      new VF.StaveNote({ clef, keys: [...new Set([...notes, ...redNotes, ...greenNotes])], duration: "w" }),
     ];
+
+    staveNotes[0] = styleKeys(staveNotes[0], redNotes, redNoteStyle);
+    staveNotes[0] = styleKeys(staveNotes[0], greenNotes, greenNoteStyle);
 
     // Create a voice in 4/4 and add the notes from above
     const voice = new VF.Voice({ num_beats: 4, beat_value: 4 });
-    voice.addTickables(VFnotes);
+    voice.addTickables(staveNotes);
     // Format and justify the notes to 400 pixels.
     const formatter = new VF.Formatter().joinVoices([voice]).format([voice], 400);
 
@@ -42,7 +72,7 @@ const SheetMusic = (props) => {
     voice.draw(context, stave);
 
     // const beams = VF.Beam.generateBeams(notes);
-    // Vex.Flow.Formatter.FormatAndDraw(context, stave, VFnotes);
+    Vex.Flow.Formatter.FormatAndDraw(context, stave, staveNotes);
     // beams.forEach((b) => { b.setContext(context).draw(); });
   }, []);
   return (
@@ -55,8 +85,12 @@ export default SheetMusic;
 SheetMusic.propTypes = {
   notes: PropTypes.arrayOf(PropTypes.string).isRequired,
   clef: PropTypes.string,
+  redNotes: PropTypes.arrayOf(PropTypes.string),
+  greenNotes: PropTypes.arrayOf(PropTypes.string),
 };
 
 SheetMusic.defaultProps = {
   clef: 'treble',
+  redNotes: [],
+  greenNotes: [],
 };
