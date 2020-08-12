@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { Piano, KeyboardShortcuts, MidiNumbers } from 'react-piano';
-import 'react-piano/dist/styles.css';
-import Soundfont from 'soundfont-player';
+import React, { useEffect, useState } from "react";
+import { Piano, KeyboardShortcuts, MidiNumbers } from "react-piano";
+import "react-piano/dist/styles.css";
+import "./customPianoStyles.css"; // import a set of overrides
+import Soundfont from "soundfont-player";
 
 const Test = () => {
-  const firstNote = MidiNumbers.fromNote('c3');
-  const lastNote = MidiNumbers.fromNote('f5');
+  const firstNote = MidiNumbers.fromNote("c3");
+  const lastNote = MidiNumbers.fromNote("f5");
   const keyboardShortcuts = KeyboardShortcuts.create({
     firstNote,
     lastNote,
@@ -16,11 +17,17 @@ const Test = () => {
 
   useEffect(() => {
     const ac = new AudioContext();
-    Soundfont.instrument(ac, 'clavinet').then((clavinet) => {
-      setInstrument(clavinet);
-      setLoading(false);
-    });
+    Soundfont.instrument(ac, "acoustic_grand_piano").then(
+      (acoustic_grand_piano) => {
+        setInstrument(acoustic_grand_piano);
+        setLoading(false);
+      }
+    );
   }, []);
+
+  // function changeKeyColor(color) {
+  //   document.getElementById("ReactPiano__Key--active").style.color = color;
+  // }
 
   return (
     <Piano
@@ -29,8 +36,7 @@ const Test = () => {
       playNote={(midiNumber) => {
         instrument.play(midiNumber);
       }}
-      stopNote={() => {
-      }}
+      stopNote={() => {}}
       width={1000}
       keyboardShortcuts={keyboardShortcuts}
     />
