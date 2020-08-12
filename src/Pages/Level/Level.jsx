@@ -93,7 +93,7 @@ const Level = () => {
     <div>
       <NavBar levelTitle={`Level ${levelNumber}`} />
       <GenericLevel levelConfig={levelConfig.levels[levelNumber]} />
-      <NowPlaying />
+      <NowPlaying disabled={false} />
     </div>
   );
 };

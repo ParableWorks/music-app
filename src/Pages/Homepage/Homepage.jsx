@@ -1,5 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -7,7 +8,7 @@ const useStyles = makeStyles(() => ({
     // marginTop: 100,
     justifyContent: 'center',
     alignItems: 'center',
-    color: 'blue',
+    color: 'green',
     backgroundColor: 'pink',
   },
 }));
@@ -17,11 +18,10 @@ const Homepage = () => {
 
   return (
     <div className={classes.root}>
-      <p>
-        pip
-        <br />
-      </p>
-      poop
+      <Link to="/levelhub">levelhub</Link>
+      <br />
+      <br />
+      <Link to="/">random generic link thing</Link>
     </div>
   );
 };
