@@ -6,8 +6,8 @@ const SheetMusic = (props) => {
   const { notes, clef, redNotes, greenNotes } = props;
   const elemRef = useRef();
 
-  const [ renderer, setRenderer ] = useState(false);
-   const VF = Vex.Flow;
+  const [renderer, setRenderer] = useState(false);
+  const VF = Vex.Flow;
 
   /**
    * applies styles to a vex note with multiple keys
@@ -41,14 +41,17 @@ const SheetMusic = (props) => {
         fillStyle: "green",
         strokeStyle: "green",
       };
-      renderer.resize(800, 100);
+
+      const width = 300;
+      const height = 100;
+      renderer.resize(width, height);
       const context = renderer.getContext();
       context.setFont("Arial", 10, "").setBackgroundFillStyle("#eed");
 
       const group = context.openGroup();
 
       // Create a stave of width 400 at position 10, 40 on the canvas.
-      const stave = new VF.Stave(0, 0, 800);
+      const stave = new VF.Stave(0, 0, width);
 
       // Add a clef and time signature.
       // stave.addClef("treble").addTimeSignature("4/4");
@@ -70,7 +73,7 @@ const SheetMusic = (props) => {
       const voice = new VF.Voice({ num_beats: 4, beat_value: 4 });
       voice.addTickables(staveNotes);
       // Format and justify the notes to 400 pixels.
-      const formatter = new VF.Formatter().joinVoices([voice]).format([voice], 400);
+      const formatter = new VF.Formatter().joinVoices([voice]).format([voice], width);
 
       // Render voice
       voice.draw(context, stave);

@@ -24,7 +24,7 @@ const Level = () => {
   }
   return (
     <div>
-      <NavBar levelTitle="Level 1" />
+      <NavBar levelTitle={`Level ${levelNumber}`} />
       <GenericLevel levelConfig={levelConfig.levels[levelNumber]} />
     </div>
   );
