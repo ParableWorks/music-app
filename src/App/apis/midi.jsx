@@ -34,6 +34,8 @@ function onMIDIMessage(message) {
     case 129:
       // noteOff(note);
       break;
+    default:
+      console.log('midi is some other number');
   }
 }
 
@@ -85,6 +87,8 @@ function noteOn(note) {
     case 11:
       console.log('B');
       break;
+    default:
+      console.log('something went wrong');
   }
 }
 
