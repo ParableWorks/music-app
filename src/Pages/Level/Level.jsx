@@ -6,10 +6,13 @@ import { Typography } from '@material-ui/core';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import LinearProgress from '@material-ui/core/LinearProgress';
+import PlayArrowIcon from '@material-ui/icons/PlayArrow';
+import Button from '@material-ui/core/Button';
 
 import GenericLevel from './components/GenericLevel';
 import levelConfig from '../../levelConfig.json';
 import NavBar from '../UniversalComponents/NavBar';
+import PlayButton from './components/PlayButton';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,15 +27,16 @@ const useStyles = makeStyles((theme) => ({
     // backgroundColor: '#3f50b5',
   },
   card: {
-    padding: theme.spacing(0),
+    padding: theme.spacing(2),
     textAlign: 'center',
-    height: '140px',
+    // height: '140px',
     backgroundColor: '#E8E9F3',
   },
+  button: { flexGrow: 0.03, color: '#221266' },
 }));
 
-const NowPlaying = () => {
-  const { disabled } = useParams();
+const NowPlaying = (props) => {
+  const { disabled } = props;
   const classes = useStyles();
 
   if (disabled === true) {
@@ -55,11 +59,12 @@ const NowPlaying = () => {
         spacing={8}
         className={(classes.nowplaying, classes.root)}
       >
-        <Grid item xs={6} sm={4} md={3} lg={2}>
+        <Grid xs={1} sm={4} md={3} lg={2}>
           <Card className={classes.card}>
             <CardContent>
               <Typography align="center">Now Playing: </Typography>
               <br />
+              <PlayButton className={classes.button} />
               <LinearProgress variant="determinate" value={69} />
             </CardContent>
           </Card>
@@ -88,7 +93,7 @@ const Level = () => {
     <div>
       <NavBar levelTitle={`Level ${levelNumber}`} />
       <GenericLevel levelConfig={levelConfig.levels[levelNumber]} />
-      <NowPlaying disabled />
+      <NowPlaying disabled={false} />
     </div>
   );
 };

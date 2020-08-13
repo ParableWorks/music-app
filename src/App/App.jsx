@@ -1,13 +1,13 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
-import {
-  BrowserRouter, Route, Switch, Redirect, Link,
-} from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect, Link } from 'react-router-dom';
 
 import Test from '../Pages/Test/Test';
 import LevelHub from '../Pages/LevelHub/levelHub';
 import Level from '../Pages/Level/Level';
+import FileNotFound from '../Pages/UniversalComponents/404';
+import Homepage from '../Pages/Homepage/Homepage';
 // import footer from '../Pages/UniversalComponents/footer';
 
 import configureStore from './store/configureStore';
@@ -26,8 +26,9 @@ const App = () => (
             <Route path="/level/:levelNumber" component={Level} />
             <Route path="/levelhub" component={LevelHub} />
             <Route path="/test" component={Test} />
-            <Route exact path="/" component={() => <Link to="/levelhub">Hello World!</Link>} />
-            <Redirect to="/" />
+            <Route path="/404" component={FileNotFound} />
+            <Route exact path="/" component={Homepage} />
+            <Redirect to="/404" />
           </Switch>
         </BrowserRouter>
       </PersistGate>
