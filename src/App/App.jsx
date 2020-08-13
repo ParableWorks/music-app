@@ -7,6 +7,7 @@ import {
 
 import LevelHub from '../Pages/LevelHub/LevelHub';
 import Level from '../Pages/Level/Level';
+import SoundPlayer from '../apis/SoundPlayer/SoundPlayer';
 // import footer from '../Pages/UniversalComponents/footer';
 
 import configureStore from './store/configureStore';
@@ -29,6 +30,7 @@ const App = () => (
           </Switch>
         </BrowserRouter>
       </PersistGate>
+      <SoundPlayer />
     </Provider>
     {/* <footer /> */}
   </div>

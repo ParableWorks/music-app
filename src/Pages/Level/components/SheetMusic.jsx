@@ -29,7 +29,7 @@ const SheetMusic = (props) => {
     setRenderer(new VF.Renderer(elemRef.current, VF.Renderer.Backends.SVG));
   }, []);
 
-  // this code seems very very sketchy
+  // this code is very very sketchy
   useEffect(() => {
     if (renderer) {
       const redNoteStyle = {
