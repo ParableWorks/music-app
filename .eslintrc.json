@@ -1,4 +1,9 @@
 {
+  "extends": ["prettier"],
+  "plugins": ["prettier"],
+  "rules": {
+    "prettier/prettier": ["error"]
+  },
   "env": {
     "browser": true,
     "es2020": true,
@@ -16,8 +21,8 @@
   "rules": {
     "linebreak-style": 0,
     "quotes": [
-      0,
-      "double",
+      2,
+      "single",
       {
         "avoidEscape": true
       }

@@ -1,9 +1,5 @@
 import React from 'react';
-import {
-  makeStyles,
-  createMuiTheme,
-  ThemeProvider,
-} from '@material-ui/core/styles';
+import { makeStyles, createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import NavBar from '../UniversalComponents/NavBar';
 import HubGrid from './Elements/HubGrid';
@@ -22,13 +18,11 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
   },
   icon: {
-    backgroundColor:
-      'linear-gradient(180deg,hsla(0,0%,100%,.8),hsla(0,0%,100%,0))',
+    backgroundColor: 'linear-gradient(180deg,hsla(0,0%,100%,.8),hsla(0,0%,100%,0))',
     color: 'primary',
   },
   checkedIcon: {
-    backgroundColor:
-      'linear-gradient(180deg,hsla(0,0%,100%,.8),hsla(0,0%,100%,0))',
+    backgroundColor: 'linear-gradient(180deg,hsla(0,0%,100%,.8),hsla(0,0%,100%,0))',
     color: 'primary',
   },
 }));

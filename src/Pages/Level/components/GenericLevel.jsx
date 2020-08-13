@@ -1,5 +1,5 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const GenericLevel = (props) => {
   const {
@@ -18,6 +18,6 @@ GenericLevel.propTypes = {
 
 GenericLevel.defaultProps = {
   levelConfig: {
-    title: "",
+    title: '',
   },
 };
