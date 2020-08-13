@@ -32,9 +32,11 @@ const useStyles = makeStyles((theme) => ({
   },
   button: { flexGrow: 0.03, color: '#221266' },
   keyboard: {
-    color: '#F00',
-    width: '1020px',
-    marginLeft: '120px',
+    // color: '#F00',
+    // width: '1020px',
+    // marginLeft: '120px',
+    position: 'fixed',
+    alignItems: 'flex-end',
   },
 }));
 
@@ -67,15 +69,7 @@ const NowPlaying = (props) => {
       <br />
       <br />
       <br />
-      <Grid container spacing={8} className={classes.keyboard}>
-        <Grid xs={1} sm={4} md={3} lg={2}>
-          <Card className={classes.keyboard}>
-            <CardContent>
-              <Test />
-            </CardContent>
-          </Card>
-        </Grid>
-      </Grid>
+      <Test className={classes.keyboard} />
     </div>
   );
 };

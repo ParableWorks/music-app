@@ -4,8 +4,11 @@ import { Typography } from '@material-ui/core';
 
 const useStyles = makeStyles(() => ({
   note: {
+    display: 'inline-block',
     fontSize: '50px',
     color: '#43a047',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 }));
 

@@ -30,8 +30,13 @@ const useStyles = makeStyles((theme) => ({
   playButton: {
     marginLeft: '-120px',
     display: 'inline-block',
+    alignItems: 'baseline',
   },
-  NoteDisplay: { marginLeft: '40px', display: 'inline-block', paddingTop: '5px' },
+  NoteDisplay: {
+    marginLeft: '40px',
+    display: 'inline-block',
+    paddingTop: '5px',
+  },
 }));
 
 const InstructBox = (props) => {
@@ -39,16 +44,18 @@ const InstructBox = (props) => {
 
   return (
     <div>
-      <Grid container spacing={8} className={(classes.nowplaying, classes.root)}>
+      <Grid
+        container
+        spacing={8}
+        className={(classes.nowplaying, classes.root)}
+      >
         <Grid xs={1} sm={4} md={3} lg={2}>
           <Card className={classes.card}>
             <CardContent>
               <Typography align="center">Now Playing: </Typography>
-              <div className={classes.playButton}>
-                <PlayButton />
-              </div>
-              <div className={classes.NoteDisplay}>
-                <NoteDisplay />
+              <div>
+                <PlayButton className={classes.playButton} />
+                <NoteDisplay className={classes.NoteDisplay} />
               </div>
             </CardContent>
           </Card>
