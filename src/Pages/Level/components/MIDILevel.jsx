@@ -9,7 +9,7 @@ const MIDILevel = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       if (redNotes.length === 0) {
-        setRedNotes(["c/4", "c/5"]);
+        setRedNotes(['c/4', 'c/5']);
       } else {
         setRedNotes([]);
       }
@@ -20,7 +20,7 @@ const MIDILevel = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       if (greenNotes.length === 0) {
-        setGreenNotes(["c/4", "f/5"]);
+        setGreenNotes(['c/4', 'f/5']);
       } else {
         setGreenNotes([]);
       }
@@ -32,7 +32,11 @@ const MIDILevel = () => {
     <div>
       this is a midi level
       <br />
-      <SheetMusic notes={["c/4", "e/4", "g/4"]} redNotes={redNotes} greenNotes={greenNotes} />
+      <SheetMusic
+        notes={['c/4', 'e/4', 'g/4']}
+        redNotes={redNotes}
+        greenNotes={greenNotes}
+      />
       <OnScreenKeyboard />
     </div>
   );

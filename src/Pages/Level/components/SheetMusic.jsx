@@ -33,20 +33,20 @@ const SheetMusic = (props) => {
   useEffect(() => {
     if (renderer) {
       const redNoteStyle = {
-        fillStyle: "red",
-        strokeStyle: "red",
+        fillStyle: 'red',
+        strokeStyle: 'red',
       };
 
       const greenNoteStyle = {
-        fillStyle: "green",
-        strokeStyle: "green",
+        fillStyle: 'green',
+        strokeStyle: 'green',
       };
 
       const width = 300;
       const height = 100;
       renderer.resize(width, height);
       const context = renderer.getContext();
-      context.setFont("Arial", 10, "").setBackgroundFillStyle("#eed");
+      context.setFont('Arial', 10, '').setBackgroundFillStyle('#eed');
 
       const group = context.openGroup();
 
@@ -56,14 +56,18 @@ const SheetMusic = (props) => {
       // Add a clef and time signature.
       // stave.addClef("treble").addTimeSignature("4/4");
       stave.addClef(clef);
-      stave.setTimeSignature("4/4");
+      stave.setTimeSignature('4/4');
 
       // Connect it to the rendering context and draw!
       stave.setContext(context).draw();
 
       const staveNotes = [
         // union of notes and redNotes with no duplicates
-        new VF.StaveNote({ clef, keys: [...new Set([...notes, ...redNotes, ...greenNotes])], duration: "w" }),
+        new VF.StaveNote({
+          clef,
+          keys: [...new Set([...notes, ...redNotes, ...greenNotes])],
+          duration: 'w',
+        }),
       ];
 
       staveNotes[0] = styleKeys(staveNotes[0], redNotes, redNoteStyle);
@@ -73,7 +77,9 @@ const SheetMusic = (props) => {
       const voice = new VF.Voice({ num_beats: 4, beat_value: 4 });
       voice.addTickables(staveNotes);
       // Format and justify the notes to 400 pixels.
-      const formatter = new VF.Formatter().joinVoices([voice]).format([voice], width);
+      const formatter = new VF.Formatter()
+        .joinVoices([voice])
+        .format([voice], width);
 
       // Render voice
       voice.draw(context, stave);
@@ -81,15 +87,13 @@ const SheetMusic = (props) => {
       // const beams = VF.Beam.generateBeams(notes);
       Vex.Flow.Formatter.FormatAndDraw(context, stave, staveNotes);
       // beams.forEach((b) => { b.setContext(context).draw(); });
-      return (() => {
+      return () => {
         context.closeGroup();
         context.svg.removeChild(group);
-      });
+      };
     }
   }, [clef, greenNotes, notes, redNotes, renderer]);
-  return (
-    <div ref={elemRef} />
-  );
+  return <div ref={elemRef} />;
 };
 
 export default SheetMusic;

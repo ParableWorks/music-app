@@ -8,9 +8,9 @@ import CardContent from '@material-ui/core/CardContent';
 
 import InstructBox from './components/InstructBox';
 import GenericLevel from './components/GenericLevel';
+import OnScreenKeyboard from './components/OnScreenKeyboard';
 import levelConfig from '../../levelConfig.json';
 import NavBar from '../UniversalComponents/NavBar';
-import Test from '../Test/Test';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -69,7 +69,7 @@ const NowPlaying = (props) => {
       <br />
       <br />
       <br />
-      <Test className={classes.keyboard} />
+      <OnScreenKeyboard className={classes.keyboard} />
     </div>
   );
 };

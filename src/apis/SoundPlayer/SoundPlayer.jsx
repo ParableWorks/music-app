@@ -15,15 +15,15 @@ const SoundPlayer = () => {
     });
   }, []);
 
-  useEffect(() => {
-    if (!loading) {
-      // if (noteBuffer !== undefined && noteBuffer[0] !== undefined) {
-        instrument.play(40);
-      // }
-    }
-  }, [loading, instrument]);
+  // useEffect(() => {
+  //   if (!loading) {
+  //     // if (noteBuffer !== undefined && noteBuffer[0] !== undefined) {
+  //       instrument.play(40);
+  //     // }
+  //   }
+  // }, [loading, instrument]);
 
-  return (<></>);
+  return <></>;
 };
 
 export default SoundPlayer;

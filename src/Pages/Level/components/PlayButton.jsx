@@ -15,7 +15,11 @@ const PlayButton = () => {
 
   return (
     <Button className={classes.button} onClick={() => setClicked(!clicked)}>
-      {clicked ? <PlayArrowIcon fontSize="large" /> : <PauseIcon fontSize="large" />}
+      {clicked ? (
+        <PlayArrowIcon fontSize="large" />
+      ) : (
+        <PauseIcon fontSize="large" />
+      )}
     </Button>
   );
 };
