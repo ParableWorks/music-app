@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Piano, KeyboardShortcuts, MidiNumbers } from 'react-piano';
 import 'react-piano/dist/styles.css';
+import './customPianoStyles.css'; // import a set of overrides
 import Soundfont from 'soundfont-player';
 
 const OnScreenKeyboard = () => {
@@ -29,8 +30,7 @@ const OnScreenKeyboard = () => {
       playNote={(midiNumber) => {
         instrument.play(midiNumber);
       }}
-      stopNote={() => {
-      }}
+      stopNote={() => {}}
       width={1000}
       keyboardShortcuts={keyboardShortcuts}
     />

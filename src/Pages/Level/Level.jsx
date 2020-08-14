@@ -1,9 +1,78 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
 
-import GenericLevel from "./components/GenericLevel";
-import levelConfig from "../../levelConfig.json";
-import NavBar from "../UniversalComponents/NavBar";
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+
+import InstructBox from './components/InstructBox';
+import GenericLevel from './components/GenericLevel';
+import levelConfig from '../../levelConfig.json';
+import NavBar from '../UniversalComponents/NavBar';
+import Test from '../Test/Test';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+    marginTop: 100,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  nowplaying: {
+    // justifyContent: 'center',
+    // alignItems: 'center',
+    // backgroundColor: '#3f50b5',
+  },
+  card: {
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    // height: '140px',
+    backgroundColor: '#E8E9F3',
+  },
+  button: { flexGrow: 0.03, color: '#221266' },
+  keyboard: {
+    // color: '#F00',
+    // width: '1020px',
+    // marginLeft: '120px',
+    position: 'fixed',
+    alignItems: 'flex-end',
+  },
+}));
+
+const NowPlaying = (props) => {
+  const { disabled } = props;
+  const classes = useStyles();
+
+  if (disabled === true) {
+    return (
+      <div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        nowplaying is disabled
+      </div>
+    );
+  }
+
+  return (
+    <div>
+      <InstructBox />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <Test className={classes.keyboard} />
+    </div>
+  );
+};
 
 const Level = () => {
   const { levelNumber } = useParams();
@@ -16,9 +85,7 @@ const Level = () => {
           {` '${levelNumber}' `}
         </h3>
         <br />
-        <Link to="/levelhub">
-          return to levelhub
-        </Link>
+        <Link to="/levelhub">return to levelhub</Link>
       </div>
     );
   }
@@ -26,6 +93,7 @@ const Level = () => {
     <div>
       <NavBar levelTitle={`Level ${levelNumber}`} />
       <GenericLevel levelConfig={levelConfig.levels[levelNumber]} />
+      <NowPlaying disabled={false} />
     </div>
   );
 };

@@ -1,5 +1,5 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 import MIDILevel from './MIDILevel';
 
@@ -11,7 +11,7 @@ const GenericLevel = (props) => {
 
   switch (type) {
     case 'midi':
-      return (<MIDILevel levelconfig={levelConfig} />);
+      return <MIDILevel levelconfig={levelConfig} />;
     default:
       return (
         <div>
@@ -35,7 +35,7 @@ GenericLevel.propTypes = {
 
 GenericLevel.defaultProps = {
   levelConfig: {
-    title: "",
+    title: '',
     type: '',
   },
 };
