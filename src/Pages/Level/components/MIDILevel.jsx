@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import OnScreenKeyboard from './OnScreenKeyboard';
 import SheetMusic from './SheetMusic';
 
+import playNote from '../../../lib/playSound'
+
 const MIDILevel = () => {
   const [redNotes, setRedNotes] = useState([]);
   const [greenNotes, setGreenNotes] = useState([]);
@@ -13,6 +15,8 @@ const MIDILevel = () => {
       } else {
         setRedNotes([]);
       }
+      console.log("play note", playNote);
+      // playNote(40);
     }, 1000);
     return () => clearInterval(interval);
   }, [redNotes]);

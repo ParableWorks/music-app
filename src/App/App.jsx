@@ -11,7 +11,6 @@ import Level from '../Pages/Level/Level';
 import FileNotFound from '../Pages/UniversalComponents/404';
 import Homepage from '../Pages/Homepage/Homepage';
 // import footer from '../Pages/UniversalComponents/footer';
-import SoundPlayer from '../apis/SoundPlayer/SoundPlayer';
 
 const { store, persistor } = configureStore(createMiddleware);
 
@@ -37,7 +36,6 @@ const App = () => (
           </Switch>
         </BrowserRouter>
       </PersistGate>
-      <SoundPlayer />
     </Provider>
     {/* <footer /> */}
   </div>
