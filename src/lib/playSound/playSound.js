@@ -1,7 +1,7 @@
 import Soundfont from 'soundfont-player';
 import { useSelector } from 'react-redux';
 import { setLoading } from './actions';
-import { store } from '../../App/App';
+// import { store } from '../../App/App';
 
 // const SoundPlayer = () => {
 // const noteBuffer = useSelector((state) => state.noteBuffer);
@@ -11,19 +11,19 @@ import { store } from '../../App/App';
 // useEffect(() => {
 
 // let instrument;
-// export let loading = true;
+let loading = true;
 
 const ac = new AudioContext();
 
 let instrument;
 // async function initialize() {
 
-store.dispatch(setLoading(true));
+// store.dispatch(setLoading(true));
 
 Soundfont.instrument(ac, 'acoustic_grand_piano').then((piano) => {
   instrument = piano;
-  store.dispatch(setLoading(false));
-  // loading = false;
+  // store.dispatch(setLoading(false));
+  loading = false;
 });
 // }
 
@@ -40,7 +40,9 @@ function playNote(note) {
 
   // });
   // console.log(instrument);
+  if (!loading) {
   instrument.play(note);
+  }
   // }
 }
 
