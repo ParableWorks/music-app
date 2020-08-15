@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
 
@@ -44,16 +44,15 @@ const randomizeNote = () => {
   }
 };
 
+let note;
+
 const NoteDisplay = (props) => {
   const classes = useStyles();
   const { input } = props;
-  let note;
 
-  if (note === undefined) {
+  useEffect(() => {
     note = randomizeNote();
-  } else {
-    note = input;
-  }
+  }, []);
 
   return <Typography className={classes.note}>{note}</Typography>;
 };
