@@ -6,7 +6,7 @@ import MIDILevel from './MIDILevel';
 const GenericLevel = (props) => {
   const { levelConfig } = props;
   const {
-    levelConfig: { title, type },
+    levelConfig: { type },
   } = props;
 
   switch (type) {
@@ -28,14 +28,12 @@ export default GenericLevel;
 
 GenericLevel.propTypes = {
   levelConfig: PropTypes.shape({
-    title: PropTypes.string,
     type: PropTypes.string,
   }),
 };
 
 GenericLevel.defaultProps = {
   levelConfig: {
-    title: '',
     type: '',
   },
 };
