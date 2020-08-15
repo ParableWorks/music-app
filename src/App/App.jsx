@@ -12,7 +12,7 @@ import FileNotFound from '../Pages/UniversalComponents/404';
 import Homepage from '../Pages/Homepage/Homepage';
 // import footer from '../Pages/UniversalComponents/footer';
 
-const { store, persistor } = configureStore(createMiddleware);
+export const { store, persistor } = configureStore(createMiddleware);
 
 const App = () => (
   <div>

@@ -6,7 +6,7 @@ import {
 } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import NavBar from '../UniversalComponents/NavBar';
-import HubGrid from './Elements/HubGrid';
+import HubGrid from './components/HubGrid';
 
 const useStyles = makeStyles((theme) => ({
   root: {
