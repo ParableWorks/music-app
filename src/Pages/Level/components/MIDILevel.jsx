@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import OnScreenKeyboard from './OnScreenKeyboard';
 import SheetMusic from './SheetMusic';
+import InstructBox from './InstructBox';
 
 const MIDILevel = () => {
   const [redNotes, setRedNotes] = useState([]);
@@ -28,15 +29,19 @@ const MIDILevel = () => {
     return () => clearInterval(interval);
   }, [greenNotes]);
 
+  const content = (
+    <SheetMusic
+      notes={['c/4', 'e/4', 'g/4']}
+      redNotes={redNotes}
+      greenNotes={greenNotes}
+    />
+  );
+
   return (
     <div>
       this is a midi level
       <br />
-      <SheetMusic
-        notes={['c/4', 'e/4', 'g/4']}
-        redNotes={redNotes}
-        greenNotes={greenNotes}
-      />
+      <InstructBox content />
       <OnScreenKeyboard />
     </div>
   );

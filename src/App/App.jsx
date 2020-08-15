@@ -25,12 +25,6 @@ const App = () => (
             {/* <Route path="/footer" component={footer} /> */}
             <Route path="/level/:levelNumber" component={Level} />
             <Route path="/levelhub" component={LevelHub} />
-            <Route
-              exact
-              path="/"
-              component={() => <Link to="/levelhub">Hello World!</Link>}
-            />
-            <Redirect to="/" />
             <Route path="/404" component={FileNotFound} />
             <Route exact path="/" component={Homepage} />
             <Redirect to="/404" />
