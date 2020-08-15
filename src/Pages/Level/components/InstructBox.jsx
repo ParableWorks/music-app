@@ -41,6 +41,7 @@ const useStyles = makeStyles((theme) => ({
 
 const InstructBox = (props) => {
   const classes = useStyles();
+  const { insideContent } = props;
 
   return (
     <div>
@@ -56,6 +57,9 @@ const InstructBox = (props) => {
               <div>
                 <PlayButton className={classes.playButton} />
                 <NoteDisplay className={classes.NoteDisplay} />
+                {insideContent}
+                {/* TODO: fix so that instructbox can display any prop given
+                component */}
               </div>
             </CardContent>
           </Card>
