@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
+import playNote from '../../../lib/playSound/playSound';
 
 const useStyles = makeStyles(() => ({
   note: {
@@ -56,5 +57,7 @@ const NoteDisplay = (props) => {
 
   return <Typography className={classes.note}>{note}</Typography>;
 };
+
+playNote(note);
 
 export default NoteDisplay;
