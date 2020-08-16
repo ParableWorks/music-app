@@ -1,12 +1,28 @@
 import React, { useState, useEffect } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
 
 import OnScreenKeyboard from './OnScreenKeyboard';
 import SheetMusic from './SheetMusic';
 import InstructBox from './InstructBox';
 
+const useStyles = makeStyles(() => ({
+  Piano: {
+    width: '100%',
+    height: '25%',
+    backgroundColor: '#EE5407',
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'absolute',
+    bottom: 0,
+    marginBottom: 0,
+  },
+}));
+
 const MIDILevel = () => {
   const [redNotes, setRedNotes] = useState([]);
   const [greenNotes, setGreenNotes] = useState([]);
+  const classes = useStyles();
+
   useEffect(() => {
     const interval = setInterval(() => {
       if (redNotes.length === 0) {
@@ -39,10 +55,10 @@ const MIDILevel = () => {
 
   return (
     <div>
-      this is a midi level
-      <br />
-      <InstructBox content />
-      <OnScreenKeyboard />
+      <InstructBox insideContent={content} />
+      <div className={classes.Piano}>
+        <OnScreenKeyboard />
+      </div>
     </div>
   );
 };
