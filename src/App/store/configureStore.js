@@ -1,14 +1,24 @@
-import { createStore, compose } from 'redux';
+import { createStore, compose, combineReducers } from 'redux';
 import { persistStore, persistReducer } from 'redux-persist';
+import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
 import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
-import rootReducer from '../rootReducer';
 
-const persistConfig = {
+import soundPlayerReducer from '../../lib/soundPlayer/reducers';
+
+// export default rootReducer;
+
+const rootPersistConfig = {
   key: 'root',
   storage,
+  blacklist: ['soundPlayer'],
 };
 
-const persistedReducer = persistReducer(persistConfig, rootReducer);
+const rootReducer = combineReducers({
+  test: (state = {}) => state,
+  soundPlayer: soundPlayerReducer,
+});
+
+const persistedReducer = persistReducer(rootPersistConfig, rootReducer);
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const configureStore = (initialState) => {
