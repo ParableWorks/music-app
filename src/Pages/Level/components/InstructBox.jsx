@@ -33,12 +33,12 @@ const useStyles = makeStyles((theme) => ({
 const InstructBox = (props) => {
   const classes = useStyles();
   const { insideContent } = props;
-  console.log({ insideContent });
+  // console.log({ insideContent });
 
   return (
     <div>
-      <Grid container spacing={8} className={classes.root}>
-        <Grid xs={1} sm={4} md={3} lg={2}>
+      <Grid container className={classes.root}>
+        <Grid>
           <Card className={classes.card}>
             <CardContent>
               <Typography align="center">Now Playing: </Typography>
