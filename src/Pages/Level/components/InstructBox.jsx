@@ -28,20 +28,40 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: '#E8E9F3',
   },
   playButton: {
-    marginLeft: '-120px',
-    display: 'inline-block',
-    alignItems: 'baseline',
+    marginLeft: '0px',
+    // display: 'inline-block',
+    // alignItems: 'baseline',
+    align: 'left',
+    alignItems: 'left',
+    alignSelf: 'flex-start',
+    order: 1,
+    justifyContent: 'flex-start',
+    flexGrow: 1,
   },
   NoteDisplay: {
-    marginLeft: '40px',
+    // marginLeft: '40px',
     display: 'inline-block',
-    paddingTop: '5px',
+    // paddingTop: '5px',
+    align: 'center',
+    alignItems: 'center',
+    order: 0,
+    flexGrow: 4,
+    // marginRight: '100px',
+  },
+  BoxContent: {
+    flexDirection: 'row',
+    display: 'flex',
+    align: 'center',
+    alignItems: 'center',
+    // justifyContent: 'space-between',
+    justifyContent: 'center',
   },
 }));
 
 const InstructBox = (props) => {
   const classes = useStyles();
   const { insideContent } = props;
+  console.log({ insideContent });
 
   return (
     <div>
@@ -54,8 +74,8 @@ const InstructBox = (props) => {
           <Card className={classes.card}>
             <CardContent>
               <Typography align="center">Now Playing: </Typography>
-              <div>
-                <PlayButton className={classes.playButton} />
+              <div className={classes.BoxContent}>
+                <PlayButton className={classes.PlayButton} />
                 <NoteDisplay className={classes.NoteDisplay} />
                 {insideContent}
                 {/* TODO: fix so that instructbox can display any prop given

@@ -41,7 +41,7 @@ const MIDILevel = () => {
     <div>
       this is a midi level
       <br />
-      <InstructBox content />
+      <InstructBox insideContent={content} />
       <OnScreenKeyboard />
     </div>
   );
