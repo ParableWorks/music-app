@@ -4,10 +4,11 @@ import 'react-piano/dist/styles.css';
 import './customPianoStyles.css'; // import a set of overrides
 import { useSelector } from 'react-redux';
 
-import playNote from '../../../lib/playSound/playSound';
+// import playNote from '../../../lib/playSound/playSound';
 
 const OnScreenKeyboard = () => {
-  const soundPlayerLoading = useSelector((state) => {console.log('sate', state); return( state.playSound.loading)});
+  const instrument = useSelector((state) => state.soundPlayer.instrument);
+  console.log('instrument', instrument);
   const firstNote = MidiNumbers.fromNote('c3');
   const lastNote = MidiNumbers.fromNote('f5');
   const keyboardShortcuts = KeyboardShortcuts.create({
@@ -23,12 +24,12 @@ const OnScreenKeyboard = () => {
 
   return (
     <Piano
-      disabled={soundPlayerLoading}
+      disabled={instrument === undefined}
       noteRange={{ first: firstNote, last: lastNote }}
       playNote={(midiNumber) => {
         // instrument.play(midiNumber);
         // playSound(midiNumber);
-        playNote(midiNumber);
+        instrument.play(midiNumber);
       }}
       stopNote={() => {}}
       width={1000}

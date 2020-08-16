@@ -6,6 +6,8 @@ import { BrowserRouter, Route, Switch, Redirect, Link } from 'react-router-dom';
 import configureStore from './store/configureStore';
 import createMiddleware from './store/createMiddleware';
 
+import startSoundPlayer from '../lib/soundPlayer/soundPlayer';
+
 import LevelHub from '../Pages/LevelHub/levelHub';
 import Level from '../Pages/Level/Level';
 import FileNotFound from '../Pages/UniversalComponents/404';
@@ -13,6 +15,7 @@ import Homepage from '../Pages/Homepage/Homepage';
 // import footer from '../Pages/UniversalComponents/footer';
 
 export const { store, persistor } = configureStore(createMiddleware);
+startSoundPlayer(store);
 
 const App = () => (
   <div>

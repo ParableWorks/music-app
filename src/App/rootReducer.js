@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 
-import playSoundReducer from '../lib/playSound/reducers';
+import soundPlayerReducer from '../lib/soundPlayer/reducers';
 
 const rootReducer = combineReducers({
   test: (state = {}) => state,
-  playSound: playSoundReducer,
+  soundPlayer: soundPlayerReducer,
 });
 
 export default rootReducer;
