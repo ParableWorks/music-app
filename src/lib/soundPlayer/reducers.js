@@ -1,10 +1,8 @@
-import { SET_LOADING, SET_INSTRUMENT } from './actions';
+import { SET_INSTRUMENT } from './actions';
 
 export default function playSoundReducer(state = {}, action) {
   // console.log('reducer called', action);
   switch (action.type) {
-    case SET_LOADING:
-      return { ...state, loading: action.payload };
     case SET_INSTRUMENT:
       return {
         ...state,
