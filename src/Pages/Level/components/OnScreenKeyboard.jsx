@@ -1,8 +1,8 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Piano, KeyboardShortcuts, MidiNumbers } from 'react-piano';
 import 'react-piano/dist/styles.css';
 import './customPianoStyles.css'; // import a set of overrides
-import { useSelector } from 'react-redux';
 
 const OnScreenKeyboard = () => {
   const instrument = useSelector((state) => state.soundPlayer.instrument);

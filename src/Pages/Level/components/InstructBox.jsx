@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import Grid from '@material-ui/core/Grid';
 import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
@@ -37,13 +38,15 @@ const randomizeNote = () => {
     const maxCeil = Math.floor(max);
     return Math.floor(Math.random() * (maxCeil - minCeil + 1)) + minCeil;
   }
-  return midiToNoteName(getRandomIntInclusive(60, 71)); // middle c to next octave
+  return getRandomIntInclusive(60, 71); // middle c to next octave
 };
 
 const InstructBox = (props) => {
   const classes = useStyles();
   const { insideContent } = props;
   // console.log({ insideContent });
+  const [note, setNote] = useState(randomizeNote());
+  const instrument = useSelector((state) => state.soundPlayer.instrument);
 
   return (
     <div>
@@ -53,10 +56,16 @@ const InstructBox = (props) => {
             <CardContent>
               <Typography align="center">Now Playing: </Typography>
               <div className={classes.BoxContent}>
-                <PlayButton className={classes.PlayButton} />
+                <PlayButton
+                  className={classes.PlayButton}
+                  onPlay={() => {
+                    instrument.play(note);
+                  }}
+                  loading={instrument === undefined}
+                />
                 <NoteDisplay
                   className={classes.NoteDisplay}
-                  note={randomizeNote()}
+                  note={midiToNoteName(note)}
                 />
                 {insideContent}
               </div>
