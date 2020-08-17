@@ -46,7 +46,9 @@ const InstructBox = (props) => {
   const { insideContent } = props;
   // console.log({ insideContent });
   const [note, setNote] = useState(randomizeNote());
+  // const [playingNote, setPlayingNote] = useState();
   const instrument = useSelector((state) => state.soundPlayer.instrument);
+  let playingNote;
 
   return (
     <div>
@@ -59,7 +61,19 @@ const InstructBox = (props) => {
                 <PlayButton
                   className={classes.PlayButton}
                   onPlay={() => {
-                    instrument.play(note);
+                    // really not a fan of magic numbers because this isnt
+                    // going to scale well to long passages but it works for
+                    // single notes
+                    // TODO: make this work with multiple notes
+                    const duration = 1;
+                    playingNote = instrument.play(note, 0, { duration });
+                    return duration;
+                  }}
+                  onPause={() => {
+                    if (playingNote) {
+                      // console.log('stopNote called', playingNote);
+                      playingNote.stop();
+                    }
                   }}
                   loading={instrument === undefined}
                 />

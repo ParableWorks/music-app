@@ -14,12 +14,19 @@ const useStyles = makeStyles(() => ({
 const PlayButton = (props) => {
   const { onPlay, onPause, loading } = props;
 
-  const [playing, setPlaying] = useState(false);
+  const [playing, setPlaying] = useState();
+  const [durationTimeout, setDurationTimeout] = useState();
   const classes = useStyles();
 
   useEffect(() => {
+    clearTimeout(durationTimeout);
     if (playing) {
-      onPlay();
+      const duration = onPlay();
+      setDurationTimeout(
+        setTimeout(() => {
+          setPlaying(false);
+        }, duration * 1000)
+      );
     } else {
       onPause();
     }
