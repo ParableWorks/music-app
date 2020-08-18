@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import MIDILevel from './MIDILevel';
+import QuestionRestults from './QuestionResults';
 
 const GenericLevel = (props) => {
   const { levelConfig } = props;
@@ -12,6 +13,8 @@ const GenericLevel = (props) => {
   switch (type) {
     case 'midi':
       return <MIDILevel levelconfig={levelConfig} />;
+    case 'test':
+      return <QuestionRestults correct />;
     default:
       return (
         <div>
