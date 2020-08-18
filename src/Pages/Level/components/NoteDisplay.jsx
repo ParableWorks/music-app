@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
-import playNote from '../../../lib/playSound/playSound';
+import playNote from '../../../lib/soundPlayer/soundPlayer';
 
 const useStyles = makeStyles(() => ({
   note: {
@@ -28,7 +28,7 @@ const NoteDisplay = (props) => {
   return <Typography className={classes.note}>{note}</Typography>;
 };
 
-playNote(note);
+// playNote(note);
 
 export default NoteDisplay;
 
