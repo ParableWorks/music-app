@@ -8,9 +8,6 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import { Avatar } from '@material-ui/core';
 import { purple } from '@material-ui/core/colors';
-import HomeIcon from '@material-ui/icons/Home';
-// import IconButton from '@material-ui/core/IconButton';
-// import MenuIcon from '@material-ui/icons/Menu';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -48,7 +45,11 @@ const NavBar = ({ levelTitle, disableHub }) => {
 
   return (
     <div className={classes.root}>
-      <AppBar sizes="large" style={{ background: '#aa90d7' }} position="fixed">
+      <AppBar
+        sizes="large"
+        style={{ background: '#aa90d7' }}
+        position="relative"
+      >
         <Toolbar>
           <Button alt="Go Home">
             <Avatar
@@ -71,7 +72,7 @@ const NavBar = ({ levelTitle, disableHub }) => {
           </Typography>
         </Toolbar>
       </AppBar>
-      <div className={classes.drawerHeaderTopMargin} />
+      <div />
     </div>
   );
 };
