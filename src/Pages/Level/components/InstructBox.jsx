@@ -28,6 +28,7 @@ const useStyles = makeStyles((theme) => ({
   NoteDisplay: {},
   BoxContent: {
     display: 'flex',
+    alignItems: 'center',
     justifyContent: 'center',
   },
 }));
@@ -52,8 +53,8 @@ const InstructBox = (props) => {
 
   return (
     <div>
-      <Grid container className={classes.root}>
-        <Grid>
+      <Grid container spacing={3} className={classes.root}>
+        <Grid item xs={6} s lg={2} zeroMinWidth>
           <Card className={classes.card}>
             <CardContent>
               <Typography align="center">Now Playing: </Typography>
