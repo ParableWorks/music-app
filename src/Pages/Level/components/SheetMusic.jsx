@@ -70,23 +70,28 @@ const SheetMusic = (props) => {
         }),
       ];
 
-      staveNotes[0] = styleKeys(staveNotes[0], redNotes, redNoteStyle);
-      staveNotes[0] = styleKeys(staveNotes[0], greenNotes, greenNoteStyle);
+      // if there are notes then render them
+      if (staveNotes[0].keys.length !== 0) {
+        staveNotes[0] = styleKeys(staveNotes[0], redNotes, redNoteStyle);
+        staveNotes[0] = styleKeys(staveNotes[0], greenNotes, greenNoteStyle);
 
-      // Create a voice in 4/4 and add the notes from above
-      const voice = new VF.Voice({ num_beats: 4, beat_value: 4 });
-      voice.addTickables(staveNotes);
-      // Format and justify the notes to 400 pixels.
-      const formatter = new VF.Formatter()
-        .joinVoices([voice])
-        .format([voice], width);
+        // Create a voice in 4/4 and add the notes from above
+        const voice = new VF.Voice({ num_beats: 4, beat_value: 4 });
+        voice.addTickables(staveNotes);
+        // Format and justify the notes to 400 pixels.
+        const formatter = new VF.Formatter()
+          .joinVoices([voice])
+          .format([voice], width);
 
-      // Render voice
-      voice.draw(context, stave);
+        // Render voice
+        voice.draw(context, stave);
 
-      // const beams = VF.Beam.generateBeams(notes);
-      Vex.Flow.Formatter.FormatAndDraw(context, stave, staveNotes);
-      // beams.forEach((b) => { b.setContext(context).draw(); });
+        // const beams = VF.Beam.generateBeams(notes);
+        Vex.Flow.Formatter.FormatAndDraw(context, stave, staveNotes);
+        // beams.forEach((b) => { b.setContext(context).draw(); });
+      }
+
+      // cleanup before component unmounts
       return () => {
         context.closeGroup();
         context.svg.removeChild(group);
@@ -99,7 +104,7 @@ const SheetMusic = (props) => {
 export default SheetMusic;
 
 SheetMusic.propTypes = {
-  notes: PropTypes.arrayOf(PropTypes.string).isRequired,
+  notes: PropTypes.arrayOf(PropTypes.string),
   clef: PropTypes.string,
   redNotes: PropTypes.arrayOf(PropTypes.string),
   greenNotes: PropTypes.arrayOf(PropTypes.string),
@@ -107,6 +112,7 @@ SheetMusic.propTypes = {
 
 SheetMusic.defaultProps = {
   clef: 'treble',
+  notes: [],
   redNotes: [],
   greenNotes: [],
 };
