@@ -59,7 +59,7 @@ const QuestionResults = (props) => {
                   Incorrect!
                 </Typography>
               )}
-              {/* <SheetMusic redNote={redNotes} greenNotes={greenNotes} /> */}
+              <SheetMusic redNote={redNotes} greenNotes={greenNotes} />
             </CardContent>
           </Card>
         </Grid>
