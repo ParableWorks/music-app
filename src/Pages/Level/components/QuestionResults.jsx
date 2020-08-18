@@ -47,7 +47,7 @@ const QuestionResults = (props) => {
   return (
     <div>
       <Grid container spacing={3} className={classes.root}>
-        <Grid item xs={6} s lg={2} zeroMinWidth>
+        <Grid item xs={6} lg={2} zeroMinWidth>
           <Card className={classes.card}>
             <CardContent>
               {correct ? (
@@ -76,13 +76,13 @@ export default QuestionResults;
 
 QuestionResults.propTypes = {
   correct: PropTypes.bool.isRequired,
-  redNotes: PropTypes.string,
-  greenNotes: PropTypes.string,
-  blackNotes: PropTypes.string,
+  blackNotes: PropTypes.arrayOf(PropTypes.string),
+  redNotes: PropTypes.arrayOf(PropTypes.string),
+  greenNotes: PropTypes.arrayOf(PropTypes.string),
 };
 
 QuestionResults.defaultProps = {
-  redNotes: '',
-  greenNotes: '',
-  blackNotes: '',
+  redNotes: [],
+  greenNotes: [],
+  blackNotes: [],
 };

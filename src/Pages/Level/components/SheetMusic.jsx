@@ -65,8 +65,7 @@ const SheetMusic = (props) => {
         // union of notes and redNotes with no duplicates
         new VF.StaveNote({
           clef,
-          // keys: [...new Set([...notes, ...redNotes, ...greenNotes])],
-          keys: [],
+          keys: [...new Set([...notes, ...redNotes, ...greenNotes])],
           duration: 'w',
         }),
       ];
