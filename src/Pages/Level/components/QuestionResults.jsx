@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import React from 'react';
+import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 const QuestionResults = (props) => {
   const classes = useStyles();
-  const { correct, redNotes, greenNotes } = props;
+  const { correct, redNotes, greenNotes, blackNotes } = props;
 
   return (
     <div>
@@ -59,7 +59,11 @@ const QuestionResults = (props) => {
                   Incorrect!
                 </Typography>
               )}
-              <SheetMusic redNote={redNotes} greenNotes={greenNotes} />
+              <SheetMusic
+                notes={blackNotes}
+                redNotes={redNotes}
+                greenNotes={greenNotes}
+              />
             </CardContent>
           </Card>
         </Grid>
@@ -69,3 +73,16 @@ const QuestionResults = (props) => {
 };
 
 export default QuestionResults;
+
+QuestionResults.propTypes = {
+  correct: PropTypes.bool.isRequired,
+  redNotes: PropTypes.string,
+  greenNotes: PropTypes.string,
+  blackNotes: PropTypes.string,
+};
+
+QuestionResults.defaultProps = {
+  redNotes: '',
+  greenNotes: '',
+  blackNotes: '',
+};

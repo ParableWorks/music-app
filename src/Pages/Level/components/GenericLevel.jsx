@@ -14,7 +14,7 @@ const GenericLevel = (props) => {
     case 'midi':
       return <MIDILevel levelconfig={levelConfig} />;
     case 'test':
-      return <QuestionRestults correct />;
+      return <QuestionRestults correct={false} />;
     default:
       return (
         <div>
