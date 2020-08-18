@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
+import NavBar from '../UniversalComponents/NavBar';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -18,10 +19,13 @@ const Homepage = () => {
 
   return (
     <div className={classes.root}>
-      <Link to="/levelhub">levelhub</Link>
-      <br />
-      <br />
-      <Link to="/">random generic link thing</Link>
+      <NavBar />
+      <p>
+        <Link to="/levelhub">levelhub</Link>
+        <br />
+        <br />
+        <Link to="/">random generic link thing</Link>
+      </p>
     </div>
   );
 };

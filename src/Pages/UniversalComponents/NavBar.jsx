@@ -50,7 +50,7 @@ const NavBar = ({ levelTitle, disableHub }) => {
     <div className={classes.root}>
       <AppBar sizes="large" style={{ background: '#aa90d7' }} position="fixed">
         <Toolbar>
-          <Button>
+          <Button alt="Go Home">
             <Avatar
               className={classes.avatar}
               alt="Go Home"
@@ -58,7 +58,6 @@ const NavBar = ({ levelTitle, disableHub }) => {
               onClick={() => history.push('/')}
             />
           </Button>
-          <HomeIcon className={classes.homeIcon} />
           <Button
             onClick={() => history.push('/levelhub')}
             color="#E8E9F3"

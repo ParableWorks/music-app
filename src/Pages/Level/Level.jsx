@@ -11,6 +11,7 @@ const Level = () => {
   if (levelConfig.levels[levelNumber] === undefined) {
     return (
       <div>
+        <NavBar />
         <h3>
           There is no level with number:
           {` '${levelNumber}' `}

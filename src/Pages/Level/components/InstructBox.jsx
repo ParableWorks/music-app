@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import Grid from '@material-ui/core/Grid';
 import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
@@ -6,56 +7,82 @@ import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 
+import midiToNoteName from '../../../lib/midiToNoteName';
 import PlayButton from './PlayButton';
 import NoteDisplay from './NoteDisplay';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1,
-    marginTop: 100,
+    marginTop: '5%',
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  nowplaying: {
-    // justifyContent: 'center',
-    // alignItems: 'center',
-    // backgroundColor: '#3f50b5',
   },
   card: {
     padding: theme.spacing(2),
     textAlign: 'center',
-    // height: '140px',
     backgroundColor: '#E8E9F3',
   },
   playButton: {
-    marginLeft: '-120px',
-    display: 'inline-block',
-    alignItems: 'baseline',
+    marginLeft: '0px',
   },
-  NoteDisplay: {
-    marginLeft: '40px',
-    display: 'inline-block',
-    paddingTop: '5px',
+  NoteDisplay: {},
+  BoxContent: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 }));
 
+const randomizeNote = () => {
+  function getRandomIntInclusive(min, max) {
+    const minCeil = Math.ceil(min);
+    const maxCeil = Math.floor(max);
+    return Math.floor(Math.random() * (maxCeil - minCeil + 1)) + minCeil;
+  }
+  return getRandomIntInclusive(60, 71); // middle c to next octave
+};
+
 const InstructBox = (props) => {
   const classes = useStyles();
+  const { insideContent } = props;
+  // console.log({ insideContent });
+  const [note, setNote] = useState(randomizeNote());
+  // const [playingNote, setPlayingNote] = useState();
+  const instrument = useSelector((state) => state.soundPlayer.instrument);
+  let playingNote;
 
   return (
     <div>
-      <Grid
-        container
-        spacing={8}
-        className={(classes.nowplaying, classes.root)}
-      >
-        <Grid xs={1} sm={4} md={3} lg={2}>
+      <Grid container spacing={3} className={classes.root}>
+        <Grid item xs={6} s lg={2} zeroMinWidth>
           <Card className={classes.card}>
             <CardContent>
               <Typography align="center">Now Playing: </Typography>
-              <div>
-                <PlayButton className={classes.playButton} />
-                <NoteDisplay className={classes.NoteDisplay} />
+              <div className={classes.BoxContent}>
+                <PlayButton
+                  className={classes.PlayButton}
+                  onPlay={() => {
+                    // really not a fan of magic numbers because this isnt
+                    // going to scale well to long passages but it works for
+                    // single notes
+                    // TODO: make this work with multiple notes
+                    const duration = 1;
+                    playingNote = instrument.play(note, 0, { duration });
+                    return duration;
+                  }}
+                  onPause={() => {
+                    if (playingNote) {
+                      // console.log('stopNote called', playingNote);
+                      playingNote.stop();
+                    }
+                  }}
+                  loading={instrument === undefined}
+                />
+                <NoteDisplay
+                  className={classes.NoteDisplay}
+                  note={midiToNoteName(note)}
+                />
+                {insideContent}
               </div>
             </CardContent>
           </Card>
