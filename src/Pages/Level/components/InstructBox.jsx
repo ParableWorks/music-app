@@ -53,40 +53,38 @@ const InstructBox = (props) => {
 
   return (
     <div>
-      <Grid container spacing={3} className={classes.root}>
-        <Grid item xs={6} lg={8} zeroMinWidth>
-          <Card className={classes.card}>
-            <CardContent>
-              <Typography align="center">Now Playing: </Typography>
-              <div className={classes.BoxContent}>
-                <PlayButton
-                  className={classes.PlayButton}
-                  onPlay={() => {
-                    // really not a fan of magic numbers because this isnt
-                    // going to scale well to long passages but it works for
-                    // single notes
-                    // TODO: make this work with multiple notes
-                    const duration = 1;
-                    playingNote = instrument.play(note, 0, { duration });
-                    return duration;
-                  }}
-                  onPause={() => {
-                    if (playingNote) {
-                      // console.log('stopNote called', playingNote);
-                      playingNote.stop();
-                    }
-                  }}
-                  loading={instrument === undefined}
-                />
-                <NoteDisplay
-                  className={classes.NoteDisplay}
-                  note={midiToNoteName(note)}
-                />
-                {insideContent}
-              </div>
-            </CardContent>
-          </Card>
-        </Grid>
+      <Grid container zeroMinWidth className={classes.root}>
+        <Card className={classes.card}>
+          <CardContent>
+            <Typography align="center">Now Playing: </Typography>
+            <div className={classes.BoxContent}>
+              <PlayButton
+                className={classes.PlayButton}
+                onPlay={() => {
+                  // really not a fan of magic numbers because this isnt
+                  // going to scale well to long passages but it works for
+                  // single notes
+                  // TODO: make this work with multiple notes
+                  const duration = 1;
+                  playingNote = instrument.play(note, 0, { duration });
+                  return duration;
+                }}
+                onPause={() => {
+                  if (playingNote) {
+                    // console.log('stopNote called', playingNote);
+                    playingNote.stop();
+                  }
+                }}
+                loading={instrument === undefined}
+              />
+              <NoteDisplay
+                className={classes.NoteDisplay}
+                note={midiToNoteName(note)}
+              />
+              {insideContent}
+            </div>
+          </CardContent>
+        </Card>
       </Grid>
     </div>
   );
