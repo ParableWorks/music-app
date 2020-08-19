@@ -53,7 +53,7 @@ const InstructBox = (props) => {
 
   return (
     <div>
-      <Grid container zeroMinWidth className={classes.root}>
+      <Grid zeroMinWidth className={classes.root}>
         <Card className={classes.card}>
           <CardContent>
             <Typography align="center">Now Playing: </Typography>

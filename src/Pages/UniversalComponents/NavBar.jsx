@@ -12,7 +12,7 @@ import SettingsIcon from '@material-ui/icons/Settings';
 import VolumeUpIcon from '@material-ui/icons/VolumeUp';
 import Popover from '@material-ui/core/Popover';
 import Slider from '@material-ui/core/Slider';
-// import VolumeDown from '@material-ui/icons/VolumeDown';
+import VolumeDown from '@material-ui/icons/VolumeDown';
 import Box from '@material-ui/core/Box';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
@@ -79,7 +79,7 @@ const NavBar = ({ levelTitle, disableHub }) => {
   };
 
   const toggleDrawer = (status) => {
-    // setSettings(status);
+    setSettings(status);
     // settings.setState(status);
   };
   console.log({ settings });
@@ -102,7 +102,6 @@ const NavBar = ({ levelTitle, disableHub }) => {
           </Button>
           <Button
             onClick={() => history.push('/levelhub')}
-            color="#E8E9F3"
             variant="contained"
             disabled={disableHub}
           >
@@ -139,13 +138,44 @@ const NavBar = ({ levelTitle, disableHub }) => {
             </Box>
           </Popover>
 
-          <Button onClick={toggleDrawer(true)} align="right">
+          <Button onClick={() => toggleDrawer(true)} align="right">
             <SettingsIcon fontSize="large" />
           </Button>
 
-          <Drawer anchor="right" open={settings} onClose={toggleDrawer(false)}>
-            hello
-            {/* https://github.com/mui-org/material-ui/blob/master/docs/src/pages/components/drawers/TemporaryDrawer.js */}
+          <Drawer
+            anchor="right"
+            open={settings}
+            onClose={() => toggleDrawer(false)}
+          >
+            <div
+              role="presentation"
+              onClick={() => toggleDrawer(true)}
+              onKeyDown={() => toggleDrawer(true)}
+            >
+              <List>
+                {['Inbox', 'Starred', 'Send email', 'Drafts'].map(
+                  (text, index) => (
+                    <ListItem button key={text}>
+                      <ListItemIcon>
+                        <VolumeDown />
+                      </ListItemIcon>
+                      <ListItemText primary={text} />
+                    </ListItem>
+                  )
+                )}
+              </List>
+              <Divider />
+              <List>
+                {['All mail', 'Trash', 'Spam'].map((text, index) => (
+                  <ListItem button key={text}>
+                    <ListItemIcon>
+                      <VolumeDown />
+                    </ListItemIcon>
+                    <ListItemText primary={text} />
+                  </ListItem>
+                ))}
+              </List>
+            </div>
           </Drawer>
         </Toolbar>
 
