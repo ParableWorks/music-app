@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
 
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
@@ -7,6 +8,7 @@ import CardContent from '@material-ui/core/CardContent';
 import OnScreenKeyboard from './OnScreenKeyboard';
 import SheetMusic from './SheetMusic';
 import InstructBox from './InstructBox';
+import getNoteSequence from '../../../lib/midi';
 
 const useStyles = makeStyles(() => ({
   Piano: {
@@ -21,10 +23,53 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const MIDILevel = () => {
+const noteSequence = getNoteSequence();
+
+const MIDILevel = (props) => {
   const [redNotes, setRedNotes] = useState([]);
   const [greenNotes, setGreenNotes] = useState([]);
+  const [notes, setNotes] = useState([]);
+
+  const { levelNumber } = props;
+
+  useEffect(() => {
+    setNotes(noteSequence);
+    console.log('notes: ', notes);
+  }, [noteSequence]);
+
   const classes = useStyles();
+
+  let correctNote;
+
+  const onKeyPress = (note) => {
+    correctNote = note;
+  };
+
+  const grade = (level) => {
+    switch (level) {
+      case 1:
+        if (notes[0] % 12 === correctNote) {
+          console.log('correct!');
+        } else {
+          console.log('incorrect');
+        }
+        break;
+      default:
+        console.log('that level does not exist');
+    }
+  };
+
+  useEffect(() => {
+    if (notes.length > 0) {
+      switch (levelNumber) {
+        case '1':
+          grade(1);
+          break;
+        default:
+          console.log('that level does not exist');
+      }
+    }
+  }, [notes]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -62,8 +107,17 @@ const MIDILevel = () => {
       <div className={classes.Piano}>
         <OnScreenKeyboard />
       </div>
+      <InstructBox noteSequence={notes} onKeyPress={onKeyPress} />
     </div>
   );
+};
+
+MIDILevel.propTypes = {
+  levelNumber: PropTypes.number,
+};
+
+MIDILevel.defaultProps = {
+  levelNumber: 1,
 };
 
 export default MIDILevel;

@@ -51,6 +51,10 @@ const InstructBox = (props) => {
   const instrument = useSelector((state) => state.soundPlayer.instrument);
   let playingNote;
 
+  const onKeyPress = (note) => {
+    props.onKeyPress(note);
+  };
+
   return (
     <div>
       <Grid zeroMinWidth className={classes.root}>

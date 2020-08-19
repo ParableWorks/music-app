@@ -6,6 +6,8 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import PauseIcon from '@material-ui/icons/Pause';
 import { makeStyles } from '@material-ui/core/styles';
+import playNote from '../../../lib/playSound/playSound';
+import note from './NoteDisplay';
 
 const useStyles = makeStyles(() => ({
   button: { flexGrow: 0.03, color: '#221266' },

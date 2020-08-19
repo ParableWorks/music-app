@@ -5,7 +5,7 @@ import MIDILevel from './MIDILevel';
 import QuestionResults from './QuestionResults';
 
 const GenericLevel = (props) => {
-  const { levelConfig } = props;
+  const { levelConfig, levelNumber } = props;
   const {
     levelConfig: { type },
   } = props;
@@ -47,10 +47,12 @@ GenericLevel.propTypes = {
   levelConfig: PropTypes.shape({
     type: PropTypes.string,
   }),
+  levelNumber: PropTypes.number,
 };
 
 GenericLevel.defaultProps = {
   levelConfig: {
     type: '',
   },
+  levelNumber: 1,
 };
