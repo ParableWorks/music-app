@@ -27,9 +27,8 @@ const SheetMusic = (props) => {
 
   useEffect(() => {
     setRenderer(new VF.Renderer(elemRef.current, VF.Renderer.Backends.SVG));
-  }, []);
+  }, [VF]);
 
-  // this code is very very sketchy
   useEffect(() => {
     if (renderer) {
       const redNoteStyle = {
@@ -79,9 +78,7 @@ const SheetMusic = (props) => {
         const voice = new VF.Voice({ num_beats: 4, beat_value: 4 });
         voice.addTickables(staveNotes);
         // Format and justify the notes to 400 pixels.
-        const formatter = new VF.Formatter()
-          .joinVoices([voice])
-          .format([voice], width);
+        new VF.Formatter().joinVoices([voice]).format([voice], width);
 
         // Render voice
         voice.draw(context, stave);
@@ -97,7 +94,8 @@ const SheetMusic = (props) => {
         context.svg.removeChild(group);
       };
     }
-  }, [clef, greenNotes, notes, redNotes, renderer]);
+    return () => {};
+  }, [clef, greenNotes, notes, redNotes, renderer, VF]);
   return <div ref={elemRef} />;
 };
 
