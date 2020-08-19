@@ -103,11 +103,11 @@ const MIDILevel = (props) => {
 
   return (
     <div>
-      <InstructBox insideContent={content} />
+      {/* <InstructBox insideContent={content} /> */}
+      <InstructBox noteSequence={notes} onKeyPress={onKeyPress} />
       <div className={classes.Piano}>
         <OnScreenKeyboard />
       </div>
-      <InstructBox noteSequence={notes} onKeyPress={onKeyPress} />
     </div>
   );
 };

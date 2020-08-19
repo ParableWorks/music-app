@@ -6,7 +6,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import PauseIcon from '@material-ui/icons/Pause';
 import { makeStyles } from '@material-ui/core/styles';
-import playNote from '../../../lib/playSound/playSound';
+import playNote from '../../../lib/soundPlayer/soundPlayer';
 import note from './NoteDisplay';
 
 const useStyles = makeStyles(() => ({
