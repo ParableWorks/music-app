@@ -4,14 +4,14 @@ import PropTypes from 'prop-types';
 import MIDILevel from './MIDILevel';
 
 const GenericLevel = (props) => {
-  const { levelConfig } = props;
+  const { levelConfig, levelNumber } = props;
   const {
     levelConfig: { type },
   } = props;
 
   switch (type) {
     case 'midi':
-      return <MIDILevel levelconfig={levelConfig} />;
+      return <MIDILevel levelconfig={levelConfig} levelNumber={levelNumber} />;
     default:
       return (
         <div>
@@ -30,10 +30,12 @@ GenericLevel.propTypes = {
   levelConfig: PropTypes.shape({
     type: PropTypes.string,
   }),
+  levelNumber: PropTypes.number,
 };
 
 GenericLevel.defaultProps = {
   levelConfig: {
     type: '',
   },
+  levelNumber: 1,
 };

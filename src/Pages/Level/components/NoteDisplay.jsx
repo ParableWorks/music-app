@@ -11,10 +11,23 @@ const useStyles = makeStyles(() => ({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  correct: {
+    display: 'inline-block',
+    fontSize: '50px',
+    color: '#76ff03',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  incorrect: {
+    display: 'inline-block',
+    fontSize: '50px',
+    color: '#F00',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 }));
 
-const randomizeNote = () => {
-  const note = Math.floor(Math.random() * 12);
+const convertToNoteName = (note) => {
   switch (note) {
     case 0:
       return 'C';
@@ -45,19 +58,34 @@ const randomizeNote = () => {
   }
 };
 
-let note;
+const randomizeNote = () => {
+  return Math.floor(Math.random() * 12);
+};
+
+let correctNote;
 
 const NoteDisplay = (props) => {
   const classes = useStyles();
   const { input } = props;
 
+  // console.log('NOTE SEQUENCE: ', props.noteSequence);
+
   useEffect(() => {
-    note = randomizeNote();
+    correctNote = randomizeNote();
+    playNote(correctNote + 60);
+    props.onKeyPress(correctNote);
+    correctNote = convertToNoteName(correctNote);
   }, []);
 
-  return <Typography className={classes.note}>{note}</Typography>;
-};
+  // if (props.noteSequence.length > 1) {
+  //   console.log(`note sequence2:${props.noteSequence}`);
+  //   if (props.noteSequence[0] % 60 === note) {
+  //     return <Typography className={classes.correct}>Correct!</Typography>;
+  //   }
+  //   return <Typography className={classes.incorrect}>Incorrect</Typography>;
+  // }
 
-playNote(note);
+  return <Typography className={classes.note}>{correctNote}</Typography>;
+};
 
 export default NoteDisplay;

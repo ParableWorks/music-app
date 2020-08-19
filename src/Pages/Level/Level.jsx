@@ -23,7 +23,10 @@ const Level = () => {
   return (
     <div>
       <NavBar levelTitle={`Level ${levelNumber}`} />
-      <GenericLevel levelConfig={levelConfig.levels[levelNumber]} />
+      <GenericLevel
+        levelConfig={levelConfig.levels[levelNumber]}
+        levelNumber={levelNumber}
+      />
     </div>
   );
 };

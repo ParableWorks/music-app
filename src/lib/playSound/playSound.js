@@ -41,8 +41,9 @@ function playNote(note) {
   // });
   // console.log(instrument);
   if (!loading) {
-  instrument.play(note);
+    instrument.play(note);
   }
+
   // }
 }
 

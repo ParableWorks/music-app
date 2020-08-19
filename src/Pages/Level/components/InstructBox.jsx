@@ -42,6 +42,10 @@ const useStyles = makeStyles((theme) => ({
 const InstructBox = (props) => {
   const classes = useStyles();
 
+  const onKeyPress = (note) => {
+    props.onKeyPress(note);
+  };
+
   return (
     <div>
       <Grid
@@ -55,7 +59,11 @@ const InstructBox = (props) => {
               <Typography align="center">Now Playing: </Typography>
               <div>
                 <PlayButton className={classes.playButton} />
-                <NoteDisplay className={classes.NoteDisplay} />
+                <NoteDisplay
+                  onKeyPress={onKeyPress}
+                  noteSequence={props.noteSequence}
+                  className={classes.NoteDisplay}
+                />
               </div>
             </CardContent>
           </Card>
