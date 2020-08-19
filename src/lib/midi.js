@@ -67,56 +67,6 @@ export default getNoteSequence;
 
 function noteOn(note) {
   noteSequence.push(note);
-  // switch (note % 12) {
-  //   case 0:
-  //     console.log('C');
-  //     break;
-  //   case 1:
-  //     console.log('C#');
-  //     break;
-
-  //   case 2:
-  //     console.log('D');
-  //     break;
-
-  //   case 3:
-  //     console.log('Eb');
-  //     break;
-
-  //   case 4:
-  //     console.log('E');
-  //     break;
-
-  //   case 5:
-  //     console.log('F');
-  //     break;
-
-  //   case 6:
-  //     console.log('F#');
-  //     break;
-
-  //   case 7:
-  //     console.log('G');
-  //     break;
-
-  //   case 8:
-  //     console.log('G#');
-  //     break;
-
-  //   case 9:
-  //     console.log('A');
-  //     break;
-
-  //   case 10:
-  //     console.log('Bb');
-  //     break;
-
-  //   case 11:
-  //     console.log('B');
-  //     break;
-  //   default:
-  //     console.log('something went wrong');
-  // }
 }
 
 function keyToNote(key) {

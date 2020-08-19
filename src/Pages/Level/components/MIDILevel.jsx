@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import Grid from '@material-ui/core/Grid';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
 import OnScreenKeyboard from './OnScreenKeyboard';
 import SheetMusic from './SheetMusic';
 import InstructBox from './InstructBox';
@@ -28,28 +26,32 @@ const noteSequence = getNoteSequence();
 const MIDILevel = (props) => {
   const [redNotes, setRedNotes] = useState([]);
   const [greenNotes, setGreenNotes] = useState([]);
-  const [notes, setNotes] = useState([]);
+  const [correctNote, setCorrectNote] = useState(0);
 
   const { levelNumber } = props;
 
-  useEffect(() => {
-    setNotes(noteSequence);
-    console.log('notes: ', notes);
-  }, [noteSequence]);
-
   const classes = useStyles();
 
-  let correctNote;
-
-  const onKeyPress = (note) => {
-    correctNote = note;
+  const randomizeNote = () => {
+    return Math.floor(Math.random() * 12);
   };
+
+  useEffect(() => {
+    setCorrectNote(randomizeNote());
+  }, []);
+
+  // plays note when level starts
+  const duration = 1;
+  const instrument = useSelector((state) => state.soundPlayer.instrument);
+  if (instrument !== undefined) {
+    instrument.play(correctNote, 0, { duration });
+  }
 
   const grade = (level) => {
     switch (level) {
       case 1:
-        if (notes[0] % 12 === correctNote) {
-          console.log('correct!');
+        if (noteSequence[0] % 12 === correctNote) {
+          console.log('correct');
         } else {
           console.log('incorrect');
         }
@@ -59,17 +61,16 @@ const MIDILevel = (props) => {
     }
   };
 
-  useEffect(() => {
-    if (notes.length > 0) {
-      switch (levelNumber) {
-        case '1':
-          grade(1);
-          break;
-        default:
-          console.log('that level does not exist');
-      }
+  // when condition is met, proceeds to grade
+  if (noteSequence.length > 0) {
+    switch (levelNumber) {
+      case '1':
+        grade(1);
+        break;
+      default:
+        console.log('that level doesnot exist');
     }
-  }, [notes]);
+  }
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -103,8 +104,7 @@ const MIDILevel = (props) => {
 
   return (
     <div>
-      {/* <InstructBox insideContent={content} /> */}
-      <InstructBox noteSequence={notes} onKeyPress={onKeyPress} />
+      <InstructBox noteSequence={noteSequence} correctNote={correctNote} />
       <div className={classes.Piano}>
         <OnScreenKeyboard />
       </div>

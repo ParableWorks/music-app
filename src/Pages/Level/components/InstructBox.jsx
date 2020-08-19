@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import Grid from '@material-ui/core/Grid';
 import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
 
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -44,16 +45,12 @@ const randomizeNote = () => {
 
 const InstructBox = (props) => {
   const classes = useStyles();
-  const { insideContent } = props;
+  const { insideContent, correctNote } = props;
   // console.log({ insideContent });
   const [note, setNote] = useState(randomizeNote());
   // const [playingNote, setPlayingNote] = useState();
   const instrument = useSelector((state) => state.soundPlayer.instrument);
   let playingNote;
-
-  const onKeyPress = (note) => {
-    props.onKeyPress(note);
-  };
 
   return (
     <div>
@@ -82,6 +79,7 @@ const InstructBox = (props) => {
                 loading={instrument === undefined}
               />
               <NoteDisplay
+                correctNote={correctNote}
                 className={classes.NoteDisplay}
                 note={midiToNoteName(note)}
               />
@@ -92,6 +90,16 @@ const InstructBox = (props) => {
       </Grid>
     </div>
   );
+};
+
+InstructBox.propTypes = {
+  insideContent: PropTypes.string,
+  correctNote: PropTypes.number,
+};
+
+InstructBox.defaultProps = {
+  insideContent: 'missing content',
+  correctNote: 0,
 };
 
 export default InstructBox;

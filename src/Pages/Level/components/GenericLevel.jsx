@@ -20,7 +20,7 @@ const GenericLevel = (props) => {
 
   switch (type) {
     case 'midi':
-      return <MIDILevel levelconfig={levelConfig} />;
+      return <MIDILevel levelconfig={levelConfig} levelNumber={levelNumber} />;
     case 'test':
       return (
         <QuestionResults

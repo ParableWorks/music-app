@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
-import playNote from '../../../lib/soundPlayer/soundPlayer';
 
 const useStyles = makeStyles(() => ({
   note: {
@@ -59,50 +58,23 @@ const convertToNoteName = (note) => {
   }
 };
 
-const randomizeNote = () => {
-  return Math.floor(Math.random() * 12);
-};
-
-let correctNote;
-
 const NoteDisplay = (props) => {
   const classes = useStyles();
-  const { note } = props;
-  // let note;
+  const { correctNote } = props;
 
-  // if (note === undefined) {
-  //   note = randomizeNote();
-  // } else {
-  // note = input;
-  // }
-  // console.log('NOTE SEQUENCE: ', props.noteSequence);
-
-  useEffect(() => {
-    correctNote = randomizeNote();
-    playNote(correctNote + 60);
-    props.onKeyPress(correctNote);
-    correctNote = convertToNoteName(correctNote);
-  }, []);
-
-  // if (props.noteSequence.length > 1) {
-  //   console.log(`note sequence2:${props.noteSequence}`);
-  //   if (props.noteSequence[0] % 60 === note) {
-  //     return <Typography className={classes.correct}>Correct!</Typography>;
-  //   }
-  //   return <Typography className={classes.incorrect}>Incorrect</Typography>;
-  // }
-
-  return <Typography className={classes.note}>{correctNote}</Typography>;
+  return (
+    <Typography className={classes.note}>
+      {convertToNoteName(correctNote)}
+    </Typography>
+  );
 };
-
-// playNote(note);
 
 export default NoteDisplay;
 
 NoteDisplay.propTypes = {
-  note: PropTypes.string,
+  correctNote: PropTypes.number,
 };
 
 NoteDisplay.defaultProps = {
-  note: '',
+  correctNote: 0,
 };
