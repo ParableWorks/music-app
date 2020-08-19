@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
-import playNote from '../../../lib/soundPlayer/soundPlayer';
+// import playNote from '../../../lib/soundPlayer/soundPlayer';
 
 const useStyles = makeStyles(() => ({
   note: {
@@ -79,7 +79,7 @@ const NoteDisplay = (props) => {
 
   useEffect(() => {
     correctNote = randomizeNote();
-    playNote(correctNote + 60);
+    // playNote(correctNote + 60);
     props.onKeyPress(correctNote);
     correctNote = convertToNoteName(correctNote);
   }, []);
