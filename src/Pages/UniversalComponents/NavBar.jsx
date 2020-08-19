@@ -78,9 +78,11 @@ const NavBar = ({ levelTitle, disableHub }) => {
     setValue(newValue);
   };
 
-  const toggleDrawer = (opens) => {
-    setSettings(opens);
+  const toggleDrawer = (status) => {
+    // setSettings(status);
+    // settings.setState(status);
   };
+  console.log({ settings });
 
   return (
     <div className={classes.root}>
@@ -137,13 +139,14 @@ const NavBar = ({ levelTitle, disableHub }) => {
             </Box>
           </Popover>
 
-          {/* <Button onClick={toggleDrawer(true)} align="right">
+          <Button onClick={toggleDrawer(true)} align="right">
             <SettingsIcon fontSize="large" />
-          </Button> */}
+          </Button>
 
-          {/* <Drawer anchor="right" open={settings} onClose={toggleDrawer(false)}>
+          <Drawer anchor="right" open={settings} onClose={toggleDrawer(false)}>
             hello
-          </Drawer> */}
+            {/* https://github.com/mui-org/material-ui/blob/master/docs/src/pages/components/drawers/TemporaryDrawer.js */}
+          </Drawer>
         </Toolbar>
 
         {/* <Button
