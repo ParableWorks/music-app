@@ -9,6 +9,7 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 
 import midiToNoteName from '../../../lib/midiToNoteName';
+import useInstrument from '../../../lib/soundPlayer/useInstrument';
 import PlayButton from './PlayButton';
 import NoteDisplay from './NoteDisplay';
 
@@ -50,6 +51,7 @@ const InstructBox = (props) => {
   const [note, setNote] = useState(randomizeNote());
   // const [playingNote, setPlayingNote] = useState();
   const instrument = useSelector((state) => state.soundPlayer.instrument);
+  const { instrumentLoading, playNote } = useInstrument(instrument);
   let playingNote;
 
   return (
@@ -67,7 +69,7 @@ const InstructBox = (props) => {
                   // single notes
                   // TODO: make this work with multiple notes
                   const duration = 1;
-                  playingNote = instrument.play(note, 0, { duration });
+                  playingNote = playNote(note, 0, { duration });
                   return duration;
                 }}
                 onPause={() => {
@@ -76,12 +78,13 @@ const InstructBox = (props) => {
                     playingNote.stop();
                   }
                 }}
-                loading={instrument === undefined}
+                loading={instrumentLoading}
               />
               <NoteDisplay
                 correctNote={correctNote}
                 className={classes.NoteDisplay}
                 note={midiToNoteName(note)}
+                onKeyPress={onKeyPress}
               />
               {insideContent}
             </div>
