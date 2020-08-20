@@ -7,6 +7,7 @@ import OnScreenKeyboard from './OnScreenKeyboard';
 import SheetMusic from './SheetMusic';
 import InstructBox from './InstructBox';
 import getNoteSequence from '../../../lib/midi';
+import QuestionResults from './QuestionResults';
 
 const useStyles = makeStyles(() => ({
   Piano: {
@@ -27,6 +28,7 @@ const MIDILevel = (props) => {
   const [redNotes, setRedNotes] = useState([]);
   const [greenNotes, setGreenNotes] = useState([]);
   const [correctNote, setCorrectNote] = useState(0);
+  const [showResults, setShowResults] = useState(false);
 
   const { levelNumber } = props;
 
@@ -52,6 +54,7 @@ const MIDILevel = (props) => {
       case 1:
         if (noteSequence[0] % 12 === correctNote) {
           console.log('correct');
+          setShowResults(true);
         } else {
           console.log('incorrect');
         }
@@ -63,25 +66,16 @@ const MIDILevel = (props) => {
 
   // when condition is met, proceeds to grade
   if (noteSequence.length > 0) {
+    // console.log(`${noteSequence} ${correctNote} ${noteSequence.length}`);
     switch (levelNumber) {
-      case '1':
+      case 1:
+        console.log('Proceeded to grade')
         grade(1);
         break;
       default:
-        console.log('that level doesnot exist');
+        console.log('that level does not exist');
     }
   }
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (greenNotes.length === 0) {
-        setGreenNotes(['c/4', 'f/5']);
-      } else {
-        setGreenNotes([]);
-      }
-    }, 1500);
-    return () => clearInterval(interval);
-  }, [greenNotes]);
 
   const content = (
     <SheetMusic
@@ -91,6 +85,15 @@ const MIDILevel = (props) => {
     />
   );
 
+  if (showResults === true) {
+    return (
+      <QuestionResults
+        correct={correctNote}
+        redNotes={redNotes}
+        greenNotes={greenNotes}
+      />
+    );
+  }
   return (
     <div>
       <InstructBox noteSequence={noteSequence} correctNote={correctNote} />
