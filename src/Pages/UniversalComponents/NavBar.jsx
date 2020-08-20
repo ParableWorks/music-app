@@ -82,7 +82,7 @@ const NavBar = ({ levelTitle, disableHub }) => {
     setSettings(status);
     // settings.setState(status);
   };
-  console.log({ settings });
+  // console.log({ settings });
 
   return (
     <div className={classes.root}>

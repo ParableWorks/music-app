@@ -27,8 +27,11 @@ const MIDILevel = (props) => {
   const [redNotes, setRedNotes] = useState([]);
   const [greenNotes, setGreenNotes] = useState([]);
   const [correctNote, setCorrectNote] = useState(0);
+  const {
+    levelConfig: { numNotes },
+  } = props;
 
-  const { levelNumber } = props;
+  // const { levelNumber } = props;
 
   const classes = useStyles();
 
@@ -62,8 +65,8 @@ const MIDILevel = (props) => {
   };
 
   // when condition is met, proceeds to grade
-  if (noteSequence.length > 0) {
-    switch (levelNumber) {
+  if (noteSequence.length > numNotes - 1) {
+    switch (numNotes) {
       case '1':
         grade(1);
         break;
@@ -71,17 +74,6 @@ const MIDILevel = (props) => {
         console.log('that level doesnot exist');
     }
   }
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (greenNotes.length === 0) {
-        setGreenNotes(['c/4', 'f/5']);
-      } else {
-        setGreenNotes([]);
-      }
-    }, 1500);
-    return () => clearInterval(interval);
-  }, [greenNotes]);
 
   const content = (
     <SheetMusic

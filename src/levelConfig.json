@@ -3,10 +3,13 @@
     "1": {
       "title": "first level",
       "description": "The first level!",
-      "type": "midi"
+      "type": "midi",
+      "numNotes": 1
     },
     "2": {
-      "title": "the second level"
+      "title": "the second level",
+      "type": "midi",
+      "numNotes": 2
     },
     "3": {
       "title": "level number 3"
