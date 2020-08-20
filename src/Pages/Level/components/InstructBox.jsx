@@ -84,7 +84,6 @@ const InstructBox = (props) => {
                 correctNote={correctNote}
                 className={classes.NoteDisplay}
                 note={midiToNoteName(note)}
-                onKeyPress={onKeyPress}
               />
               {insideContent}
             </div>

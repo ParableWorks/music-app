@@ -74,17 +74,6 @@ const MIDILevel = (props) => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      if (redNotes.length === 0) {
-        setRedNotes(['c/4', 'c/5']);
-      } else {
-        setRedNotes([]);
-      }
-    }, 1000);
-    return () => clearInterval(interval);
-  }, [redNotes]);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
       if (greenNotes.length === 0) {
         setGreenNotes(['c/4', 'f/5']);
       } else {
