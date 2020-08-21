@@ -25,11 +25,13 @@ const SheetMusic = (props) => {
     return note;
   };
 
+  // on initial render start up renderer
   useEffect(() => {
     setRenderer(new VF.Renderer(elemRef.current, VF.Renderer.Backends.SVG));
   }, [VF]);
 
   useEffect(() => {
+    // if renderer is started then show sheet music
     if (renderer) {
       const redNoteStyle = {
         fillStyle: 'red',
@@ -44,6 +46,7 @@ const SheetMusic = (props) => {
       const width = 300;
       const height = 100;
       renderer.resize(width, height);
+
       const context = renderer.getContext();
       context.setFont('Arial', 10, '').setBackgroundFillStyle('#eed');
 
@@ -69,7 +72,8 @@ const SheetMusic = (props) => {
         }),
       ];
 
-      // if there are notes then render them
+      // if there are notes then render them otherwise errors out if
+      // there are no notes
       if (staveNotes[0].keys.length !== 0) {
         staveNotes[0] = styleKeys(staveNotes[0], redNotes, redNoteStyle);
         staveNotes[0] = styleKeys(staveNotes[0], greenNotes, greenNoteStyle);
@@ -88,7 +92,8 @@ const SheetMusic = (props) => {
         // beams.forEach((b) => { b.setContext(context).draw(); });
       }
 
-      // cleanup before component unmounts
+      // cleanup before component unmounts so when SheetMusic rerenders
+      // it does not render a new copy below the original
       return () => {
         context.closeGroup();
         context.svg.removeChild(group);

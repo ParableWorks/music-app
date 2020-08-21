@@ -73,6 +73,7 @@ const InstructBox = (props) => {
                   return duration;
                 }}
                 onPause={() => {
+                  // if we are playing a note then sto playing
                   if (playingNote) {
                     // console.log('stopNote called', playingNote);
                     playingNote.stop();

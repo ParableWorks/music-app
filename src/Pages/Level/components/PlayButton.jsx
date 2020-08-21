@@ -6,8 +6,6 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import PauseIcon from '@material-ui/icons/Pause';
 import { makeStyles } from '@material-ui/core/styles';
-import playNote from '../../../lib/soundPlayer/soundPlayer';
-import note from './NoteDisplay';
 
 const useStyles = makeStyles(() => ({
   button: { flexGrow: 0.03, color: '#221266' },
@@ -20,23 +18,32 @@ const PlayButton = (props) => {
   const [durationTimeout, setDurationTimeout] = useState();
   const classes = useStyles();
 
+  // set timeout for when to stop playing
+  // end the old timeout so we dont stop in the middle
+  // of playing in the future
   useEffect(() => {
-    clearTimeout(durationTimeout);
     if (playing) {
       const duration = onPlay();
-      setDurationTimeout(
+      setDurationTimeout((timeout) => {
+        clearTimeout(timeout);
+        // start new timeout
         setTimeout(() => {
+          // when timeout stop playing
+          // so that play button is shown
           setPlaying(false);
-        }, duration * 1000)
-      );
+        }, duration * 1000);
+      });
     } else {
+      // if not playing then pause
       onPause();
     }
   }, [playing, onPlay, onPause]);
 
+  // if loading prop is true then return loading
   if (loading) {
     return <CircularProgress />;
   }
+  // if not loading then return pause/play icon
   return (
     <Button className={classes.button} onClick={() => setPlaying(!playing)}>
       {playing ? (
