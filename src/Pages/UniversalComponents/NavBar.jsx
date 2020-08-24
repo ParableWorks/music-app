@@ -56,6 +56,9 @@ const useStyles = makeStyles((theme) => ({
     width: '100px',
   },
 }));
+const getVolume = () => {
+  return { value } / 100;
+};
 
 const NavBar = ({ levelTitle, disableHub }) => {
   const classes = useStyles();

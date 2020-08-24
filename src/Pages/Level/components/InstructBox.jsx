@@ -66,7 +66,8 @@ const InstructBox = (props) => {
                   // single notes
                   // TODO: make this work with multiple notes
                   const duration = 1;
-                  playingNote = instrument.play(note, 0, { duration });
+                  const volume = 100;
+                  playingNote = playNote(note, 0, { duration, gain: volume });
                   return duration;
                 }}
                 onPause={() => {
