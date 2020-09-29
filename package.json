@@ -1,7 +1,7 @@
 {
   "name": "programming-team-summer-2020-project",
   "version": "1.0.0",
-  "homepage": "https://parableworks.github.io/music-app/",
+  "homepage": "https://musicapp.godsped.com/",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -9,7 +9,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --mode production",
     "lint:fix": "eslint --fix --ext .js,.jsx .",
-    "deploytoweb": "gh-pages -d ./dist"
+    "deploytoweb": "npm run build && gh-pages -d ./dist"
   },
   "author": "",
   "license": "ISC",

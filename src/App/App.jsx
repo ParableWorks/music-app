@@ -1,7 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { HashRouter, BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
 import configureStore from './store/configureStore';
 import createMiddleware from './store/createMiddleware';
@@ -22,7 +22,8 @@ const App = () => (
     {/* <header /> */}
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <BrowserRouter>
+        {/* <BrowserRouter> */}
+        <HashRouter basename="/">
           <Switch>
             {/* <Route path="/footer" component={footer} /> */}
             <Route path="/level/:levelNumber" component={Level} />
@@ -31,7 +32,8 @@ const App = () => (
             <Route exact path="/" component={Homepage} />
             <Redirect to="/404" />
           </Switch>
-        </BrowserRouter>
+        {/* </BrowserRouter> */}
+        </HashRouter>
       </PersistGate>
     </Provider>
     {/* <footer /> */}
