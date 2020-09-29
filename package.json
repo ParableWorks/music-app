@@ -1,7 +1,7 @@
 {
   "name": "programming-team-summer-2020-project",
   "version": "1.0.0",
-  "homepage": "https://musicapp.godsped.com/",
+  "homepage": "musicapp.godsped.com",
   "description": "",
   "main": "index.js",
   "scripts": {

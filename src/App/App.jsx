@@ -22,7 +22,7 @@ const App = () => (
     {/* <header /> */}
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        {/* <BrowserRouter> */}
+        {/* <BrowserRouter>  have to use hashrouter for our situation to force our router and 404s to override the hosting. more info: https://stackoverflow.com/a/51975988 */}
         <HashRouter basename="/">
           <Switch>
             {/* <Route path="/footer" component={footer} /> */}

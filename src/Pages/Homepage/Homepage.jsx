@@ -25,6 +25,9 @@ const Homepage = () => {
         <br />
         <br />
         <Link to="/">random generic link thing</Link>
+        <h3>
+          <Link to="https://github.com/ParableWorks/music-app">Find the source code here!</Link>
+        </h3>
       </p>
     </div>
   );
