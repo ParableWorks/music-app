@@ -156,20 +156,18 @@ const NavBar = ({ levelTitle, disableHub }) => {
               onKeyDown={() => toggleDrawer(true)}
             >
               <List>
-                {['Inbox', 'Starred', 'Send email', 'Drafts'].map(
-                  (text, index) => (
-                    <ListItem button key={text}>
-                      <ListItemIcon>
-                        <VolumeDown />
-                      </ListItemIcon>
-                      <ListItemText primary={text} />
-                    </ListItem>
-                  )
-                )}
+                {['Settings', 'Upgrade to Pro'].map((text, index) => (
+                  <ListItem button key={text}>
+                    <ListItemIcon>
+                      <VolumeDown />
+                    </ListItemIcon>
+                    <ListItemText primary={text} />
+                  </ListItem>
+                ))}
               </List>
               <Divider />
               <List>
-                {['All mail', 'Trash', 'Spam'].map((text, index) => (
+                {['Log Out'].map((text, index) => (
                   <ListItem button key={text}>
                     <ListItemIcon>
                       <VolumeDown />

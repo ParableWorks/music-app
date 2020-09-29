@@ -8,6 +8,7 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 
 import midiToNoteName from '../../../lib/midiToNoteName';
+import playNote from '../../../lib/soundPlayer/soundPlayer';
 import PlayButton from './PlayButton';
 import NoteDisplay from './NoteDisplay';
 
@@ -67,7 +68,8 @@ const InstructBox = (props) => {
                   // TODO: make this work with multiple notes
                   const duration = 1;
                   const volume = 100;
-                  playingNote = playNote(note, 0, { duration, gain: volume });
+                  // playingNote = playNote(note, 0, { duration, gain: volume });
+                  playingNote = instrument.play(note, 0, { duration });
                   return duration;
                 }}
                 onPause={() => {

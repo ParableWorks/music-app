@@ -9,7 +9,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --mode production",
     "lint:fix": "eslint --fix --ext .js,.jsx .",
-    "deploytoweb": "gh-pages -d build"
+    "deploytoweb": "gh-pages -d ./dist"
   },
   "author": "",
   "license": "ISC",
