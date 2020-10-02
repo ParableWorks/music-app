@@ -26,7 +26,9 @@ const Homepage = () => {
         <br />
         <Link to="/">home page</Link>
         <h1>
-          <a href="https://github.com/ParableWorks/music-app">Find the source code here!</a>
+          <a href="https://github.com/ParableWorks/music-app">
+            Find the source code here!
+          </a>
         </h1>
       </p>
     </div>
